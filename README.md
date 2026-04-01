@@ -457,3 +457,4 @@ coin-shop/
 This is a commercial template. Redistribution, resale, or sharing of the source code is prohibited without a valid license. Each deployment requires a separate license.
 
 For licensing inquiries, contact the template author.
+# force rebuild
