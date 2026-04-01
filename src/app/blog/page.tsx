@@ -26,7 +26,7 @@ export default async function BlogPage() {
             News &amp; Market Updates
           </h1>
           <p className="mt-3 text-[#FFF9F2]/60 text-lg">
-            Insights, market analysis, and collecting tips from our experts
+            Store news, product highlights, and community updates
           </p>
         </div>
       </section>

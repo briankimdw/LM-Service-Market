@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Customer Testimonials",
+  title: "What Our Neighbors Say",
   description:
     "Read what our customers have to say about their experience shopping with us.",
 };
@@ -45,10 +45,10 @@ export default async function TestimonialsPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-[#D4451A] text-sm font-semibold uppercase tracking-widest mb-3">Reviews</p>
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
-            Customer Testimonials
+            What Our Neighbors Say
           </h1>
           <p className="text-[#FFF9F2]/60 text-lg max-w-2xl mx-auto">
-            Don&apos;t just take our word for it &mdash; hear from our satisfied customers
+            Don&apos;t just take our word for it &mdash; see why the neighborhood shops with us
           </p>
         </div>
       </section>
@@ -96,7 +96,7 @@ export default async function TestimonialsPage() {
             Ready to Experience It Yourself?
           </h2>
           <p className="text-gray-500 mb-10 text-lg">
-            Visit us today or get in touch to buy, sell, or learn more.
+            Stop by for everyday essentials, fresh products, and friendly service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

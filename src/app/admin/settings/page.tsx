@@ -692,7 +692,7 @@ export default function SettingsPage() {
         {/* Email Configuration */}
         <Section title="Email Configuration">
           <p className="text-sm text-gray-500 mb-2">
-            Configure SMTP settings so the website can send emails (inquiry replies, appointment confirmations, etc.)
+            Configure SMTP settings so the website can send emails (inquiry replies, order notifications, etc.)
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
