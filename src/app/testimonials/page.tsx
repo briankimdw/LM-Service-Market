@@ -44,7 +44,7 @@ export default async function TestimonialsPage() {
       <section className="page-hero py-16 md:py-20">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-[#D4451A] text-sm font-semibold uppercase tracking-widest mb-3">Reviews</p>
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             What Our Neighbors Say
           </h1>
           <p className="text-[#FFF9F2]/60 text-lg max-w-2xl mx-auto">
@@ -54,7 +54,7 @@ export default async function TestimonialsPage() {
       </section>
 
       {/* Testimonials Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {testimonials.length === 0 ? (
             <div className="text-center py-16 rounded-2xl bg-[var(--surface-alt)] border border-[var(--border)]">
@@ -89,7 +89,7 @@ export default async function TestimonialsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[var(--surface-alt)]">
+      <section className="py-12 md:py-20 bg-[var(--surface-alt)]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-[#D4451A] text-sm font-semibold uppercase tracking-widest mb-3">Join Our Customers</p>
           <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#1A3C2A] mb-4">

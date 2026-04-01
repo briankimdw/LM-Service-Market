@@ -84,12 +84,12 @@ export default function AboutPage() {
   return (
     <>
       {/* ====== HERO BANNER ====== */}
-      <section className="page-hero py-16 md:py-20">
+      <section className="page-hero py-12 md:py-20">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-[#D4451A] text-sm font-semibold uppercase tracking-widest mb-3">
             Our Story
           </p>
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             About L&M Service Market
           </h1>
           <p className="text-[#FFF9F2]/60 text-lg max-w-2xl mx-auto">
@@ -99,14 +99,14 @@ export default function AboutPage() {
       </section>
 
       {/* ====== OUR STORY ====== */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
             <div>
               <p className="text-[#D4451A] text-sm font-semibold uppercase tracking-widest mb-3">
                 The Market
               </p>
-              <h2 className="font-serif text-3xl font-bold text-[#1A3C2A] mb-6">
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#1A3C2A] mb-6">
                 Your Corner Store, Your Community
               </h2>
               <div className="prose prose-lg max-w-none space-y-4">
@@ -137,9 +137,9 @@ export default function AboutPage() {
       </section>
 
       {/* ====== MEET RICHARD ====== */}
-      <section className="py-20 bg-[var(--surface-alt)]">
+      <section className="py-12 md:py-20 bg-[var(--surface-alt)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
             <div className="order-2 lg:order-1 flex justify-center">
               <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl w-72 h-72 flex items-center justify-center border border-[var(--border)]">
                 <div className="text-center text-gray-400">
@@ -152,7 +152,7 @@ export default function AboutPage() {
               <p className="text-[#D4451A] text-sm font-semibold uppercase tracking-widest mb-3">
                 The Heart of L&M
               </p>
-              <h2 className="font-serif text-3xl font-bold text-[#1A3C2A] mb-3">
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#1A3C2A] mb-3">
                 Meet Richard
               </h2>
               <div
@@ -179,13 +179,13 @@ export default function AboutPage() {
       </section>
 
       {/* ====== WHAT WE CARRY ====== */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 md:mb-14">
             <p className="text-[#D4451A] text-sm font-semibold uppercase tracking-widest mb-3">
               Products & Services
             </p>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#1A3C2A] mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#1A3C2A] mb-4">
               What We Carry
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto text-lg">
@@ -221,13 +221,13 @@ export default function AboutPage() {
       </section>
 
       {/* ====== WHY CHOOSE US ====== */}
-      <section className="py-20 bg-[var(--surface-alt)]">
+      <section className="py-12 md:py-20 bg-[var(--surface-alt)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 md:mb-14">
             <p className="text-[#D4451A] text-sm font-semibold uppercase tracking-widest mb-3">
               Our Promise
             </p>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#1A3C2A] mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#1A3C2A] mb-4">
               Why L&M?
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto text-lg">
@@ -263,10 +263,10 @@ export default function AboutPage() {
       </section>
 
       {/* ====== CTA ====== */}
-      <section className="py-20 bg-[#1A3C2A]">
+      <section className="py-12 md:py-20 bg-[#1A3C2A]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <FaMapMarkerAlt className="text-4xl text-[#D4451A] mx-auto mb-6" />
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
             Come See Us in Midtown
           </h2>
           <p className="text-[#FFF9F2]/70 text-lg mb-8 max-w-2xl mx-auto">

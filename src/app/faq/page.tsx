@@ -62,7 +62,7 @@ export default async function FaqPage() {
         )}
 
         {/* Still have questions CTA */}
-        <div className="mt-14 text-center bg-white rounded-2xl border border-[var(--border)] p-10">
+        <div className="mt-10 sm:mt-14 text-center bg-white rounded-2xl border border-[var(--border)] p-6 sm:p-10">
           <h3 className="font-serif text-xl font-bold text-[#1A3C2A] mb-3">
             Still have questions?
           </h3>

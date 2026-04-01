@@ -30,19 +30,19 @@ export default function AnnouncementBanner({ messages }: AnnouncementBannerProps
 
   return (
     <div className="bg-[#D4451A] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
-        <div className="flex flex-col items-center gap-2">
-          <div className="flex items-center justify-center gap-3 text-center min-h-[1.5rem]">
-            <FaBullhorn className="h-4 w-4 flex-shrink-0 animate-[pulse_2s_ease-in-out_infinite]" />
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5">
+        <div className="flex flex-col items-center gap-1.5 sm:gap-2">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 text-center min-h-[1.25rem] sm:min-h-[1.5rem]">
+            <FaBullhorn className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0 animate-[pulse_2s_ease-in-out_infinite]" />
             <p
-              className="text-sm sm:text-base font-medium transition-opacity duration-500"
+              className="text-xs sm:text-sm md:text-base font-medium transition-opacity duration-500 leading-snug"
               style={{ opacity: visible ? 1 : 0 }}
             >
               {messages[currentIndex]}
             </p>
           </div>
           {messages.length > 1 && (
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1 sm:gap-1.5">
               {messages.map((_, i) => (
                 <button
                   key={i}
@@ -53,10 +53,10 @@ export default function AnnouncementBanner({ messages }: AnnouncementBannerProps
                       setVisible(true);
                     }, 300);
                   }}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                  className={`h-1 sm:h-1.5 rounded-full transition-all duration-300 ${
                     i === currentIndex
-                      ? "w-4 bg-white"
-                      : "w-1.5 bg-white/40 hover:bg-white/60"
+                      ? "w-3 sm:w-4 bg-white"
+                      : "w-1 sm:w-1.5 bg-white/40 hover:bg-white/60"
                   }`}
                   aria-label={`Go to announcement ${i + 1}`}
                 />

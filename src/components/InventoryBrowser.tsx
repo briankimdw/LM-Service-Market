@@ -306,7 +306,7 @@ export default function InventoryBrowser() {
               className="absolute inset-0 bg-black/50 backdrop-blur-sm"
               onClick={() => setFiltersOpen(false)}
             />
-            <div className="absolute bottom-0 left-0 right-0 top-0 w-80 overflow-y-auto bg-white p-7 shadow-2xl">
+            <div className="absolute bottom-0 left-0 right-0 top-0 w-[85vw] max-w-80 overflow-y-auto bg-white p-5 sm:p-7 shadow-2xl">
               <div className="mb-6 flex items-center justify-between">
                 <h2 className="font-serif text-lg font-bold text-[#1A3C2A]">
                   Filters
@@ -365,7 +365,7 @@ export default function InventoryBrowser() {
 
               {/* Pagination */}
               {pagination.totalPages > 1 && (
-                <div className="mt-10 flex items-center justify-center gap-2">
+                <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
                   <button
                     onClick={() => setPage((p) => Math.max(1, p - 1))}
                     disabled={page <= 1}
@@ -377,7 +377,7 @@ export default function InventoryBrowser() {
                     )}
                   >
                     <FaChevronLeft className="h-3 w-3" />
-                    Previous
+                    <span className="hidden sm:inline">Previous</span>
                   </button>
 
                   <div className="flex items-center gap-1">
@@ -432,7 +432,7 @@ export default function InventoryBrowser() {
                         : "border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-gray-300"
                     )}
                   >
-                    Next
+                    <span className="hidden sm:inline">Next</span>
                     <FaChevronRight className="h-3 w-3" />
                   </button>
                 </div>

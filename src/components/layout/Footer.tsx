@@ -68,12 +68,12 @@ export function Footer({ store }: { store?: StoreInfo | null }) {
   const hasSocials = socialFacebook || socialInstagram || socialTwitter;
 
   return (
-    <footer className="relative bg-[#1A3C2A] text-[#FFF9F2]/70">
+    <footer className="relative bg-[#1A3C2A] text-[#FFF9F2]/70 pb-20 sm:pb-0">
       {/* Top gold accent */}
       <div className="h-1 bg-gradient-to-r from-[#B83A15] via-[#D4451A] to-[#B83A15]" />
 
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:py-16 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 sm:gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Shop Info */}
           <div>
             <h3 className="font-serif text-xl font-bold text-[#FFF9F2] mb-5 tracking-wide">
@@ -233,7 +233,7 @@ export function Footer({ store }: { store?: StoreInfo | null }) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-14 border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-10 sm:mt-14 border-t border-white/10 pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-[#FFF9F2]/40">
             &copy; {currentYear} {shopName}. All rights reserved.
           </p>

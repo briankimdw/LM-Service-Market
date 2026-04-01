@@ -44,7 +44,7 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
       <Header store={store} />
-      <main className="flex-1 pb-16 lg:pb-0">{children}</main>
+      <main className="flex-1 pb-20 lg:pb-0">{children}</main>
       <Footer store={store} />
       <MobileNav />
       <QuickContact />

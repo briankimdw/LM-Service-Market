@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaChevronDown, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 
 interface NavLink {
@@ -11,16 +11,21 @@ interface NavLink {
   href: string;
 }
 
-const navLinks: NavLink[] = [
+const primaryLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Products", href: "/inventory" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+
+const secondaryLinks: NavLink[] = [
   { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
   { label: "Request", href: "/request" },
-  { label: "Contact", href: "/contact" },
   { label: "Testimonials", href: "/testimonials" },
 ];
+
+const allLinks: NavLink[] = [...primaryLinks, ...secondaryLinks];
 
 interface StoreInfo {
   shopName: string;
@@ -63,9 +68,12 @@ function checkIsOpen(hoursJson: string): boolean {
 
 export function Header({ store }: { store?: StoreInfo | null }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false); // kept for bottom glow only
+  const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const moreButtonRef = useRef<HTMLButtonElement>(null);
+  const moreDropdownRef = useRef<HTMLDivElement>(null);
 
   const shopName = store?.shopName || "L & M Service Market";
   const initials = useMemo(() => {
@@ -95,10 +103,13 @@ export function Header({ store }: { store?: StoreInfo | null }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close menus on route change
   useEffect(() => {
     setMobileMenuOpen(false);
+    setMoreDropdownOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -110,6 +121,26 @@ export function Header({ store }: { store?: StoreInfo | null }) {
     };
   }, [mobileMenuOpen]);
 
+  // Close "More" dropdown on click outside
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (
+        moreDropdownRef.current &&
+        !moreDropdownRef.current.contains(e.target as Node) &&
+        moreButtonRef.current &&
+        !moreButtonRef.current.contains(e.target as Node)
+      ) {
+        setMoreDropdownOpen(false);
+      }
+    }
+    if (moreDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [moreDropdownOpen]);
+
+  const isSecondaryActive = secondaryLinks.some((link) => pathname === link.href);
+
   return (
     <header
       className={cn(
@@ -117,7 +148,7 @@ export function Header({ store }: { store?: StoreInfo | null }) {
         scrolled && "shadow-[0_4px_20px_rgba(0,0,0,0.15)]"
       )}
     >
-      {/* Subtle gold accent line at top */}
+      {/* Subtle accent line at top */}
       <div className="h-[2px] bg-gradient-to-r from-transparent via-[#D4451A] to-transparent opacity-60" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -152,7 +183,7 @@ export function Header({ store }: { store?: StoreInfo | null }) {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-0.5">
-            {navLinks.map((link) => (
+            {primaryLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -169,6 +200,54 @@ export function Header({ store }: { store?: StoreInfo | null }) {
                 )}
               </Link>
             ))}
+
+            {/* More Dropdown */}
+            <div className="relative">
+              <button
+                ref={moreButtonRef}
+                onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
+                className={cn(
+                  "relative flex items-center gap-1 px-3.5 py-2 text-[13px] font-medium rounded-lg transition-all duration-300",
+                  isSecondaryActive || moreDropdownOpen
+                    ? "text-[#D4451A] bg-white/10"
+                    : "text-[#FFF9F2]/75 hover:text-[#D4451A] hover:bg-white/5"
+                )}
+                aria-expanded={moreDropdownOpen}
+                aria-haspopup="true"
+              >
+                More
+                <FaChevronDown className={cn("h-2.5 w-2.5 transition-transform duration-200", moreDropdownOpen && "rotate-180")} />
+                {isSecondaryActive && !moreDropdownOpen && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-[2px] bg-[#D4451A] rounded-full" />
+                )}
+              </button>
+
+              {/* Dropdown Panel */}
+              <div
+                ref={moreDropdownRef}
+                className={cn(
+                  "absolute right-0 top-full mt-2 w-48 origin-top-right rounded-xl bg-white py-2 shadow-xl ring-1 ring-black/5 transition-all duration-200",
+                  moreDropdownOpen
+                    ? "scale-100 opacity-100 translate-y-0"
+                    : "scale-95 opacity-0 -translate-y-1 pointer-events-none"
+                )}
+              >
+                {secondaryLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn(
+                      "block px-4 py-2.5 text-sm font-medium transition-colors duration-200",
+                      pathname === link.href
+                        ? "text-[#D4451A] bg-[#D4451A]/5"
+                        : "text-gray-700 hover:text-[#D4451A] hover:bg-gray-50"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </nav>
 
           {/* Right Side: Status + Mobile Menu */}
@@ -208,20 +287,40 @@ export function Header({ store }: { store?: StoreInfo | null }) {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          "lg:hidden transition-all duration-400 overflow-hidden",
-          mobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+          "fixed inset-0 top-[65px] sm:top-[81px] z-40 bg-black/40 transition-opacity duration-300 lg:hidden",
+          mobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        )}
+        onClick={() => setMobileMenuOpen(false)}
+      />
+
+      {/* Mobile Menu Panel */}
+      <div
+        className={cn(
+          "fixed top-[65px] sm:top-[81px] right-0 bottom-0 z-50 w-[280px] max-w-[85vw] bg-[#1A3C2A] overflow-y-auto transition-transform duration-300 ease-out lg:hidden",
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
-        <nav className="border-t border-white/10 bg-[#1A3C2A] px-4 py-3 space-y-0.5">
-          {navLinks.map((link) => (
+        {/* Close button at top of panel */}
+        <div className="flex justify-end px-4 pt-4">
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-[#FFF9F2]/60 hover:text-[#D4451A] hover:bg-white/10 transition-colors"
+            aria-label="Close menu"
+          >
+            <FaTimes className="h-5 w-5" />
+          </button>
+        </div>
+
+        <nav className="px-4 pb-6 space-y-1">
+          {allLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
-                "block rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200",
+                "flex items-center rounded-lg px-4 py-3 text-[15px] font-medium transition-all duration-200 min-h-[44px]",
                 pathname === link.href
                   ? "text-[#D4451A] bg-white/10"
                   : "text-[#FFF9F2]/75 hover:text-[#D4451A] hover:bg-white/5"
@@ -230,25 +329,43 @@ export function Header({ store }: { store?: StoreInfo | null }) {
               {link.label}
             </Link>
           ))}
-
-          {/* Mobile Open/Closed Badge */}
-          <div className="flex items-center gap-2 px-4 pt-3 pb-1 sm:hidden">
-            <span
-              className={cn(
-                "h-2 w-2 rounded-full",
-                isOpen ? "bg-green-400 animate-pulse" : "bg-red-400"
-              )}
-            />
-            <span
-              className={cn(
-                "text-xs font-semibold",
-                isOpen ? "text-green-400" : "text-red-400"
-              )}
-            >
-              {isOpen ? "Open Now" : "Closed"}
-            </span>
-          </div>
         </nav>
+
+        {/* Divider */}
+        <div className="mx-4 border-t border-white/10" />
+
+        {/* Mobile Open/Closed Badge */}
+        <div className="flex items-center gap-2 px-8 py-4">
+          <span
+            className={cn(
+              "h-2 w-2 rounded-full",
+              isOpen ? "bg-green-400 animate-pulse" : "bg-red-400"
+            )}
+          />
+          <span
+            className={cn(
+              "text-xs font-semibold",
+              isOpen ? "text-green-400" : "text-red-400"
+            )}
+          >
+            {isOpen ? "Open Now" : "Closed"}
+          </span>
+        </div>
+
+        {/* Store Contact Info */}
+        <div className="px-8 pb-8 space-y-3">
+          <a
+            href="tel:+14048760576"
+            className="flex items-center gap-3 text-[#FFF9F2]/50 hover:text-[#D4451A] transition-colors text-sm"
+          >
+            <FaPhone className="h-3.5 w-3.5 flex-shrink-0" />
+            <span>(404) 876-0576</span>
+          </a>
+          <div className="flex items-start gap-3 text-[#FFF9F2]/50 text-sm">
+            <FaMapMarkerAlt className="h-3.5 w-3.5 flex-shrink-0 mt-0.5" />
+            <span>699 Ponce De Leon Ave NE, Atlanta, GA 30308</span>
+          </div>
+        </div>
       </div>
 
       {/* Bottom glow effect */}

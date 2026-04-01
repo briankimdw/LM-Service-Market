@@ -27,7 +27,7 @@ export default async function ContactPage() {
       <section className="page-hero py-16 md:py-20">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-[#D4451A] text-sm font-semibold uppercase tracking-widest mb-3">Get In Touch</p>
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             Contact Us
           </h1>
           <p className="text-[#FFF9F2]/60 text-lg max-w-2xl mx-auto">
@@ -36,9 +36,9 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
             {/* ====== CONTACT FORM ====== */}
             <div>
               <h2 className="font-serif text-2xl font-bold text-[#1A3C2A] mb-2">
@@ -153,7 +153,7 @@ export default async function ContactPage() {
       </section>
 
       {/* ====== MAP ====== */}
-      <section className="py-20 bg-[var(--surface-alt)]">
+      <section className="py-12 md:py-20 bg-[var(--surface-alt)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="text-[#D4451A] text-sm font-semibold uppercase tracking-widest mb-3">Location</p>
@@ -161,10 +161,10 @@ export default async function ContactPage() {
               Find Us
             </h2>
           </div>
-          <div className="bg-gray-100 rounded-2xl overflow-hidden min-h-[400px] flex items-center justify-center shadow-inner border border-[var(--border)]">
+          <div className="bg-gray-100 rounded-2xl overflow-hidden min-h-[280px] sm:min-h-[400px] flex items-center justify-center shadow-inner border border-[var(--border)]">
             {settings.googleMapsEmbed ? (
               <div
-                className="w-full h-full min-h-[400px]"
+                className="w-full h-full min-h-[280px] sm:min-h-[400px]"
                 dangerouslySetInnerHTML={{ __html: settings.googleMapsEmbed }}
               />
             ) : (

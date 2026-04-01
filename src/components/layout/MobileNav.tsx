@@ -20,8 +20,8 @@ export function MobileNav() {
   if (pathname.startsWith("/admin")) return null;
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 lg:hidden safe-area-bottom">
-      <div className="flex items-center justify-around h-16">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 lg:hidden" style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}>
+      <div className="flex items-stretch justify-around" style={{ minHeight: "56px" }}>
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = pathname === item.href ||
@@ -32,16 +32,20 @@ export function MobileNav() {
               key={item.href}
               href={item.href}
               className={cn(
-                "flex flex-col items-center justify-center gap-0.5 w-full h-full transition-colors",
+                "relative flex flex-col items-center justify-center gap-1 flex-1 min-h-[56px] min-w-[44px] transition-colors",
                 isActive
                   ? "text-[#D4451A]"
                   : "text-gray-400 active:text-[#D4451A]"
               )}
             >
-              <Icon className={cn("text-lg", isActive && "text-xl")} />
+              {/* Active indicator bar */}
+              {isActive && (
+                <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[3px] rounded-b-full bg-[#D4451A]" />
+              )}
+              <Icon className={cn("text-xl", isActive && "text-[22px]")} />
               <span className={cn(
-                "text-[10px] font-medium",
-                isActive && "font-semibold"
+                "text-[10px] leading-tight",
+                isActive ? "font-bold" : "font-medium"
               )}>
                 {item.label}
               </span>

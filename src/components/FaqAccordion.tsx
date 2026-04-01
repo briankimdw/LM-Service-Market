@@ -26,7 +26,7 @@ export default function FaqAccordion({ faqs }: { faqs: FaqItem[] }) {
           >
             <button
               onClick={() => setOpenId(isOpen ? null : faq.id)}
-              className="w-full flex items-center justify-between px-7 py-5 text-left group"
+              className="w-full flex items-center justify-between px-4 sm:px-7 py-4 sm:py-5 text-left group"
             >
               <span
                 className={cn(
@@ -53,7 +53,7 @@ export default function FaqAccordion({ faqs }: { faqs: FaqItem[] }) {
                 isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
               )}
             >
-              <div className="px-7 pb-6 text-gray-600 leading-relaxed text-[15px]">
+              <div className="px-4 sm:px-7 pb-5 sm:pb-6 text-gray-600 leading-relaxed text-[15px]">
                 {faq.answer}
               </div>
             </div>
