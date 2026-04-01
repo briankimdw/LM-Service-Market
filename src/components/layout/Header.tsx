@@ -14,15 +14,15 @@ interface NavLink {
 const primaryLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Products", href: "/inventory" },
-  { label: "About", href: "/about" },
+  { label: "Request", href: "/request" },
+  { label: "Reviews", href: "/testimonials" },
   { label: "Contact", href: "/contact" },
 ];
 
 const secondaryLinks: NavLink[] = [
+  { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
-  { label: "Request", href: "/request" },
-  { label: "Testimonials", href: "/testimonials" },
 ];
 
 const allLinks: NavLink[] = [...primaryLinks, ...secondaryLinks];

@@ -152,6 +152,38 @@ export default async function ContactPage() {
         </div>
       </section>
 
+      {/* ====== VENDORS & SUPPLIERS ====== */}
+      <section className="py-12 md:py-16 bg-[#1A3C2A]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-[#D4451A] text-sm font-semibold uppercase tracking-widest mb-3">Vendors & Suppliers</p>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-4">
+              Want Your Products In Our Store?
+            </h2>
+            <p className="text-[#FFF9F2]/70 mb-8 text-lg leading-relaxed">
+              We&apos;re always looking for new products to offer our customers — especially local brands, craft beverages, and unique snacks. If you&apos;re a vendor or distributor interested in getting your products on our shelves, we&apos;d love to hear from you.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+              <div className="bg-white/10 rounded-xl p-5 border border-white/10">
+                <p className="text-[#D4451A] font-bold text-lg mb-1">Local Brands</p>
+                <p className="text-[#FFF9F2]/60 text-sm">We love supporting Atlanta-made products</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-5 border border-white/10">
+                <p className="text-[#D4451A] font-bold text-lg mb-1">Craft Beverages</p>
+                <p className="text-[#FFF9F2]/60 text-sm">Craft beer, wine, and specialty drinks</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-5 border border-white/10">
+                <p className="text-[#D4451A] font-bold text-lg mb-1">Unique Snacks</p>
+                <p className="text-[#FFF9F2]/60 text-sm">Specialty and hard-to-find snack brands</p>
+              </div>
+            </div>
+            <p className="text-[#FFF9F2]/50 text-sm">
+              Use the contact form above and select &quot;Vendor / Supplier Partnership&quot; as the subject, or call us at <a href="tel:4048760576" className="text-[#D4451A] hover:underline">(404) 876-0576</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ====== MAP ====== */}
       <section className="py-12 md:py-20 bg-[var(--surface-alt)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

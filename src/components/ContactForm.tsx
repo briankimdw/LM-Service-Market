@@ -153,8 +153,10 @@ export default function ContactForm() {
             <option value="">Select a subject</option>
             <option value="General Inquiry">General Inquiry</option>
             <option value="Buying">Product Inquiry</option>
-            <option value="Selling">Wholesale / Vendor Inquiry</option>
-            <option value="Appraisal">Special Order Request</option>
+            <option value="Vendor">Vendor / Supplier Partnership</option>
+            <option value="Wholesale">Wholesale Inquiry</option>
+            <option value="Special Order">Special Order Request</option>
+            <option value="Feedback">Feedback / Suggestion</option>
             <option value="Other">Other</option>
           </select>
         </div>
