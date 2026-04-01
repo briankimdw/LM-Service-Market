@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
   title: "Customer Testimonials",
   description:
-    "Read what our customers have to say about their experience buying and selling coins with us.",
+    "Read what our customers have to say about their experience shopping with us.",
 };
 
 async function getTestimonials() {

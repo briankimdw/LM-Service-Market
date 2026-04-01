@@ -26,9 +26,6 @@ const sortOptions = [
   { value: "date-desc", label: "Newest Listed" },
   { value: "price-asc", label: "Price: Low to High" },
   { value: "price-desc", label: "Price: High to Low" },
-  { value: "year-asc", label: "Year: Old to New" },
-  { value: "year-desc", label: "Year: New to Old" },
-  { value: "grade", label: "Grade" },
 ];
 
 export default function InventoryBrowser() {
@@ -41,15 +38,8 @@ export default function InventoryBrowser() {
     const cat = searchParams.get("category");
     return cat ? cat.split(",") : [];
   });
-  const [selectedMetals, setSelectedMetals] = useState<string[]>(() => {
-    const met = searchParams.get("metal");
-    return met ? met.split(",") : [];
-  });
-  const [grade, setGrade] = useState(searchParams.get("grade") || "");
   const [minPrice, setMinPrice] = useState(searchParams.get("minPrice") || "");
   const [maxPrice, setMaxPrice] = useState(searchParams.get("maxPrice") || "");
-  const [minYear, setMinYear] = useState(searchParams.get("minYear") || "");
-  const [maxYear, setMaxYear] = useState(searchParams.get("maxYear") || "");
   const [sort, setSort] = useState(searchParams.get("sort") || "date-desc");
   const [page, setPage] = useState(parseInt(searchParams.get("page") || "1"));
 
@@ -63,7 +53,7 @@ export default function InventoryBrowser() {
   });
   const [loading, setLoading] = useState(true);
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [quickViewCoin, setQuickViewCoin] = useState<CoinListing | null>(null);
+  const [quickViewProduct, setQuickViewProduct] = useState<CoinListing | null>(null);
 
   // Build query params and fetch
   const fetchListings = useCallback(async () => {
@@ -72,12 +62,8 @@ export default function InventoryBrowser() {
 
     if (search) params.set("search", search);
     if (selectedCategories.length === 1) params.set("category", selectedCategories[0]);
-    if (selectedMetals.length === 1) params.set("metal", selectedMetals[0]);
-    if (grade) params.set("grade", grade);
     if (minPrice) params.set("minPrice", minPrice);
     if (maxPrice) params.set("maxPrice", maxPrice);
-    if (minYear) params.set("minYear", minYear);
-    if (maxYear) params.set("maxYear", maxYear);
     if (sort) params.set("sort", sort);
     params.set("page", page.toString());
     params.set("limit", "20");
@@ -90,12 +76,12 @@ export default function InventoryBrowser() {
         data.pagination || { page: 1, limit: 20, total: 0, totalPages: 0 }
       );
     } catch (error) {
-      console.error("Failed to fetch inventory:", error);
+      console.error("Failed to fetch products:", error);
       setListings([]);
     } finally {
       setLoading(false);
     }
-  }, [search, selectedCategories, selectedMetals, grade, minPrice, maxPrice, minYear, maxYear, sort, page]);
+  }, [search, selectedCategories, minPrice, maxPrice, sort, page]);
 
   useEffect(() => {
     fetchListings();
@@ -106,12 +92,8 @@ export default function InventoryBrowser() {
     const params = new URLSearchParams();
     if (search) params.set("search", search);
     if (selectedCategories.length > 0) params.set("category", selectedCategories.join(","));
-    if (selectedMetals.length > 0) params.set("metal", selectedMetals.join(","));
-    if (grade) params.set("grade", grade);
     if (minPrice) params.set("minPrice", minPrice);
     if (maxPrice) params.set("maxPrice", maxPrice);
-    if (minYear) params.set("minYear", minYear);
-    if (maxYear) params.set("maxYear", maxYear);
     if (sort !== "date-desc") params.set("sort", sort);
     if (page > 1) params.set("page", page.toString());
 
@@ -119,7 +101,7 @@ export default function InventoryBrowser() {
     router.replace(`/inventory${queryString ? `?${queryString}` : ""}`, {
       scroll: false,
     });
-  }, [search, selectedCategories, selectedMetals, grade, minPrice, maxPrice, minYear, maxYear, sort, page, router]);
+  }, [search, selectedCategories, minPrice, maxPrice, sort, page, router]);
 
   const toggleCategory = (cat: string) => {
     setSelectedCategories((prev) =>
@@ -128,22 +110,11 @@ export default function InventoryBrowser() {
     setPage(1);
   };
 
-  const toggleMetal = (met: string) => {
-    setSelectedMetals((prev) =>
-      prev.includes(met) ? prev.filter((m) => m !== met) : [...prev, met]
-    );
-    setPage(1);
-  };
-
   const clearFilters = () => {
     setSearch("");
     setSelectedCategories([]);
-    setSelectedMetals([]);
-    setGrade("");
     setMinPrice("");
     setMaxPrice("");
-    setMinYear("");
-    setMaxYear("");
     setSort("date-desc");
     setPage(1);
   };
@@ -151,12 +122,8 @@ export default function InventoryBrowser() {
   const hasActiveFilters =
     search ||
     selectedCategories.length > 0 ||
-    selectedMetals.length > 0 ||
-    grade ||
     minPrice ||
-    maxPrice ||
-    minYear ||
-    maxYear;
+    maxPrice;
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -164,7 +131,7 @@ export default function InventoryBrowser() {
     fetchListings();
   };
 
-  const filterInputClasses = "w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-[#1A3C2A] focus:border-[#D4451A] focus:outline-none focus:shadow-[0_0_0_3px_rgba(201,168,76,0.1)] transition-all duration-300";
+  const filterInputClasses = "w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-[#1A3C2A] focus:border-[#D4451A] focus:outline-none focus:shadow-[0_0_0_3px_rgba(212,69,26,0.1)] transition-all duration-300";
 
   // Skeleton loader
   const SkeletonCard = () => (
@@ -201,48 +168,6 @@ export default function InventoryBrowser() {
         </div>
       </div>
 
-      {/* Metals */}
-      <div>
-        <h3 className="mb-3 font-serif text-xs font-bold uppercase tracking-widest text-[#1A3C2A]">
-          Metal
-        </h3>
-        <div className="space-y-2.5">
-          {shopConfig.metals.filter((m) => ["Gold", "Silver", "Copper", "Platinum"].includes(m)).map((met) => (
-            <label key={met} className="flex cursor-pointer items-center gap-2.5 group">
-              <input
-                type="checkbox"
-                checked={selectedMetals.includes(met)}
-                onChange={() => toggleMetal(met)}
-                className="h-4 w-4 rounded border-gray-300 text-[#D4451A] focus:ring-[#D4451A]"
-              />
-              <span className="text-sm text-gray-600 group-hover:text-[#1A3C2A] transition-colors duration-200">{met}</span>
-            </label>
-          ))}
-        </div>
-      </div>
-
-      {/* Grade */}
-      <div>
-        <h3 className="mb-3 font-serif text-xs font-bold uppercase tracking-widest text-[#1A3C2A]">
-          Grade
-        </h3>
-        <select
-          value={grade}
-          onChange={(e) => {
-            setGrade(e.target.value);
-            setPage(1);
-          }}
-          className={filterInputClasses}
-        >
-          <option value="">All Grades</option>
-          {shopConfig.grades.map((g) => (
-            <option key={g} value={g}>
-              {g}
-            </option>
-          ))}
-        </select>
-      </div>
-
       {/* Price Range */}
       <div>
         <h3 className="mb-3 font-serif text-xs font-bold uppercase tracking-widest text-[#1A3C2A]">
@@ -275,36 +200,6 @@ export default function InventoryBrowser() {
         </div>
       </div>
 
-      {/* Year Range */}
-      <div>
-        <h3 className="mb-3 font-serif text-xs font-bold uppercase tracking-widest text-[#1A3C2A]">
-          Year Range
-        </h3>
-        <div className="flex items-center gap-2">
-          <input
-            type="number"
-            placeholder="Min"
-            value={minYear}
-            onChange={(e) => {
-              setMinYear(e.target.value);
-              setPage(1);
-            }}
-            className={filterInputClasses}
-          />
-          <span className="text-gray-300 flex-shrink-0">&ndash;</span>
-          <input
-            type="number"
-            placeholder="Max"
-            value={maxYear}
-            onChange={(e) => {
-              setMaxYear(e.target.value);
-              setPage(1);
-            }}
-            className={filterInputClasses}
-          />
-        </div>
-      </div>
-
       {/* Clear Filters */}
       {hasActiveFilters && (
         <button
@@ -325,10 +220,10 @@ export default function InventoryBrowser() {
           <FaSearch className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
           <input
             type="text"
-            placeholder="Search coins, bullion, currency..."
+            placeholder="Search products, snacks, beverages..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-xl border border-gray-200 bg-white py-3.5 pl-12 pr-4 text-[#1A3C2A] placeholder-gray-400 focus:border-[#D4451A] focus:outline-none focus:shadow-[0_0_0_3px_rgba(201,168,76,0.1)] transition-all duration-300 shadow-sm"
+            className="w-full rounded-xl border border-gray-200 bg-white py-3.5 pl-12 pr-4 text-[#1A3C2A] placeholder-gray-400 focus:border-[#D4451A] focus:outline-none focus:shadow-[0_0_0_3px_rgba(212,69,26,0.1)] transition-all duration-300 shadow-sm"
           />
           {search && (
             <button
@@ -382,7 +277,7 @@ export default function InventoryBrowser() {
               setSort(e.target.value);
               setPage(1);
             }}
-            className="rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-600 focus:border-[#D4451A] focus:outline-none focus:shadow-[0_0_0_3px_rgba(201,168,76,0.1)] transition-all duration-300"
+            className="rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-600 focus:border-[#D4451A] focus:outline-none focus:shadow-[0_0_0_3px_rgba(212,69,26,0.1)] transition-all duration-300"
           >
             {sortOptions.map((opt) => (
               <option key={opt.value} value={opt.value}>
@@ -442,7 +337,7 @@ export default function InventoryBrowser() {
                 <FaSearch className="h-6 w-6 text-gray-300" />
               </div>
               <p className="text-lg font-serif font-bold text-gray-400">
-                No coins found
+                No products found
               </p>
               <p className="mt-2 text-sm text-gray-400">
                 Try adjusting your filters or search terms
@@ -459,11 +354,11 @@ export default function InventoryBrowser() {
           ) : (
             <>
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {listings.map((coin) => (
+                {listings.map((item) => (
                   <CoinCard
-                    key={coin.id}
-                    coin={coin}
-                    onQuickView={setQuickViewCoin}
+                    key={item.id}
+                    coin={item}
+                    onQuickView={setQuickViewProduct}
                   />
                 ))}
               </div>
@@ -548,7 +443,7 @@ export default function InventoryBrowser() {
       </div>
 
       {/* Quick View Modal */}
-      <QuickViewModal coin={quickViewCoin} onClose={() => setQuickViewCoin(null)} />
+      <QuickViewModal coin={quickViewProduct} onClose={() => setQuickViewProduct(null)} />
     </div>
   );
 }

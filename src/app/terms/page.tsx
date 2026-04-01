@@ -59,7 +59,7 @@ export default async function TermsPage() {
           <p className="text-gray-700 leading-relaxed">
             All products listed on our website are subject to availability.
             Prices are displayed in US dollars and may change without notice due
-            to fluctuations in precious metal spot prices or market conditions.
+            to changes in supplier pricing or market conditions.
             While we strive to display accurate product descriptions and images,
             we do not warrant that all information is error-free. Product
             photographs are representative and actual items may vary slightly in
@@ -76,9 +76,8 @@ export default async function TermsPage() {
             If you are not satisfied with a purchase, please contact us within 7
             days of receiving your item. Items must be returned in their original
             condition and packaging. Refunds are issued at our discretion and may
-            be subject to a restocking fee. Bullion and precious metal items may
-            be subject to different return policies based on market price
-            fluctuations at the time of return.
+            be subject to a restocking fee. Perishable items and opened
+            consumable products may not be eligible for return.
           </p>
         </section>
 

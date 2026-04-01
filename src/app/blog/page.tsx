@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
   title: "News & Market Updates",
   description:
-    "Stay informed with the latest coin collecting news, precious metals market updates, and expert insights.",
+    "Stay informed with the latest store news, product updates, and community insights.",
 };
 
 export default async function BlogPage() {

@@ -45,7 +45,7 @@ export default async function PrivacyPage() {
           <p className="text-gray-700 leading-relaxed">
             {settings.shopName} collects information you voluntarily provide when
             you contact us, subscribe to our newsletter, submit an inquiry or
-            appraisal request, or make a purchase. This may include your name,
+            special order request, or make a purchase. This may include your name,
             email address, phone number, and mailing address. We may also
             automatically collect certain technical information such as your
             browser type and IP address when you visit our website.

@@ -5,9 +5,9 @@ import InventoryBrowser from "@/components/InventoryBrowser";
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Inventory",
+  title: "Our Products",
   description:
-    "Browse our full inventory of rare coins, bullion, paper money, and collectibles. Filter by category, metal, grade, and price.",
+    "Browse our full selection of snacks, beverages, groceries, and everyday essentials. Filter by category and price.",
 };
 
 export default function InventoryPage() {
@@ -18,10 +18,10 @@ export default function InventoryPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-[#D4451A] text-sm font-semibold uppercase tracking-widest mb-3">Browse Our Selection</p>
           <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
-            Our Inventory
+            Browse Products
           </h1>
           <p className="text-[#FFF9F2]/60 max-w-2xl mx-auto text-lg">
-            Browse our current selection of coins, bullion, and collectibles
+            Browse our current selection of snacks, beverages, groceries, and more
           </p>
         </div>
       </section>

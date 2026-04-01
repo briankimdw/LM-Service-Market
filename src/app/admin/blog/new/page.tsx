@@ -184,7 +184,7 @@ export default function NewBlogPostPage() {
             name="tags"
             value={form.tags}
             onChange={handleChange}
-            placeholder="Comma-separated (e.g., gold, coins, investing)"
+            placeholder="Comma-separated (e.g., snacks, beverages, community)"
             className="input-field w-full"
           />
         </div>
@@ -212,7 +212,7 @@ export default function NewBlogPostPage() {
           <button
             type="submit"
             disabled={loading}
-            className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#D4451A] hover:bg-[#b8963e] text-white font-semibold rounded-lg transition-colors disabled:opacity-60"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#D4451A] hover:bg-[#B83A15] text-white font-semibold rounded-lg transition-colors disabled:opacity-60"
           >
             {loading ? (
               <FaSpinner className="animate-spin" />

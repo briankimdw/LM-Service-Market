@@ -4,25 +4,11 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { FaTimes, FaExternalLinkAlt } from "react-icons/fa";
 import { formatPrice } from "@/lib/spot-prices";
-import { cn } from "@/lib/utils";
 import type { CoinListing } from "@/components/CoinCard";
 
 interface QuickViewModalProps {
   coin: CoinListing | null;
   onClose: () => void;
-}
-
-function getGradeBadgeColor(grade: string | null | undefined): string {
-  if (!grade) return "bg-gray-100 text-gray-600";
-  if (grade.startsWith("MS-7") || grade.startsWith("PF-7"))
-    return "bg-emerald-50 text-emerald-700 border border-emerald-200";
-  if (grade.startsWith("MS-6") || grade.startsWith("PF-6"))
-    return "bg-blue-50 text-blue-700 border border-blue-200";
-  if (grade.startsWith("AU") || grade.startsWith("EF"))
-    return "bg-amber-50 text-amber-700 border border-amber-200";
-  if (grade.startsWith("VF") || grade.startsWith("F-"))
-    return "bg-orange-50 text-orange-700 border border-orange-200";
-  return "bg-gray-100 text-gray-600";
 }
 
 function parseImages(imagesJson: string): string[] {
@@ -108,47 +94,10 @@ export default function QuickViewModal({ coin, onClose }: QuickViewModalProps) {
             </h2>
 
             <div className="mt-4 space-y-2.5">
-              {coin.year && (
-                <p className="text-sm text-gray-500">
-                  <span className="font-semibold text-[#1A3C2A]">Year:</span>{" "}
-                  {coin.year}
-                  {coin.mintMark ? ` (${coin.mintMark})` : ""}
-                </p>
-              )}
-
-              {coin.grade && (
-                <p className="flex items-center gap-2 text-sm text-gray-500">
-                  <span className="font-semibold text-[#1A3C2A]">Grade:</span>
-                  <span
-                    className={cn(
-                      "rounded-full px-2.5 py-0.5 text-[11px] font-semibold",
-                      getGradeBadgeColor(coin.grade)
-                    )}
-                  >
-                    {coin.grade}
-                  </span>
-                </p>
-              )}
-
-              {coin.certification && coin.certification !== "Raw" && (
-                <p className="text-sm text-gray-500">
-                  <span className="font-semibold text-[#1A3C2A]">Certification:</span>{" "}
-                  {coin.certification}
-                  {coin.certNumber ? ` #${coin.certNumber}` : ""}
-                </p>
-              )}
-
               <p className="text-sm text-gray-500">
                 <span className="font-semibold text-[#1A3C2A]">Category:</span>{" "}
                 {coin.category}
               </p>
-
-              {coin.metal && (
-                <p className="text-sm text-gray-500">
-                  <span className="font-semibold text-[#1A3C2A]">Metal:</span>{" "}
-                  {coin.metal}
-                </p>
-              )}
             </div>
 
             {coin.description && (
@@ -164,7 +113,7 @@ export default function QuickViewModal({ coin, onClose }: QuickViewModalProps) {
 
               <Link
                 href={`/inventory/${coin.slug}`}
-                className="mt-5 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#1A3C2A] to-[#243558] px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-[#1A3C2A]/25"
+                className="mt-5 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#1A3C2A] to-[#245236] px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-[#1A3C2A]/25"
               >
                 View Full Details
                 <FaExternalLinkAlt className="h-3 w-3" />

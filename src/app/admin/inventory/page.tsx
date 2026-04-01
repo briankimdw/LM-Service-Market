@@ -26,8 +26,6 @@ interface InventoryItem {
   title: string;
   slug: string;
   category: string;
-  metal: string | null;
-  grade: string | null;
   askingPrice: number;
   quantity: number;
   featured: boolean;
@@ -174,7 +172,7 @@ export default function AdminInventoryPage() {
             {images[0] ? (
               <img src={images[0]} alt="" className="w-full h-full object-cover" />
             ) : (
-              <span className="text-2xl">🪙</span>
+              <span className="text-2xl">&#x1F6D2;</span>
             )}
           </div>
           <div className="flex-1 min-w-0">
@@ -185,12 +183,6 @@ export default function AdminInventoryPage() {
               <span className="inline-flex px-2 py-0.5 rounded-md bg-gray-100 text-xs font-medium text-gray-600">
                 {item.category}
               </span>
-              {item.metal && (
-                <span className="text-xs text-gray-400">{item.metal}</span>
-              )}
-              {item.grade && (
-                <span className="text-xs text-gray-400">{item.grade}</span>
-              )}
             </div>
           </div>
           <div className="text-right flex-shrink-0">
@@ -231,7 +223,7 @@ export default function AdminInventoryPage() {
           <div className="flex items-center gap-1">
             <Link
               href={`/admin/inventory/${item.id}/edit`}
-              className="p-2.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+              className="p-2.5 text-[#D4451A] hover:bg-[#D4451A]/10 rounded-lg transition-colors"
             >
               <FaEdit />
             </Link>
@@ -253,10 +245,10 @@ export default function AdminInventoryPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-[#1A3C2A]">
-            Inventory
+            Products
           </h1>
           <p className="text-sm text-gray-400 mt-0.5">
-            {total} total items
+            {total} total products
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -285,7 +277,7 @@ export default function AdminInventoryPage() {
           </button>
           <Link
             href="/admin/inventory/new"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4451A] hover:bg-[#b8963e] text-white rounded-lg transition-all font-medium shadow-sm shadow-[#D4451A]/25 text-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4451A] hover:bg-[#B83A15] text-white rounded-lg transition-all font-medium shadow-sm shadow-[#D4451A]/25 text-sm"
           >
             <FaPlus className="text-xs" /> Add New
           </Link>
@@ -349,12 +341,6 @@ export default function AdminInventoryPage() {
                 <th className="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                   Category
                 </th>
-                <th className="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">
-                  Metal
-                </th>
-                <th className="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">
-                  Grade
-                </th>
                 <th className="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                   Price
                 </th>
@@ -376,7 +362,7 @@ export default function AdminInventoryPage() {
               {loading ? (
                 Array.from({ length: 5 }).map((_, i) => (
                   <tr key={i}>
-                    {Array.from({ length: 9 }).map((_, j) => (
+                    {Array.from({ length: 7 }).map((_, j) => (
                       <td key={j} className="px-4 py-4">
                         <div className="h-5 bg-gray-200 rounded animate-pulse" />
                       </td>
@@ -385,7 +371,7 @@ export default function AdminInventoryPage() {
                 ))
               ) : items.length === 0 ? (
                 <tr>
-                  <td colSpan={9} className="px-4 py-16 text-center">
+                  <td colSpan={7} className="px-4 py-16 text-center">
                     <div className="text-gray-400">
                       <FaSearch className="text-4xl mx-auto mb-3 opacity-50" />
                       <p className="text-lg font-medium">No items found</p>
@@ -422,12 +408,6 @@ export default function AdminInventoryPage() {
                           {item.category}
                         </span>
                       </td>
-                      <td className="px-4 py-3 text-sm text-gray-600 hidden lg:table-cell">
-                        {item.metal || "—"}
-                      </td>
-                      <td className="px-4 py-3 text-sm text-gray-600 hidden lg:table-cell">
-                        {item.grade || "—"}
-                      </td>
                       <td className="px-4 py-3 font-semibold text-gray-900">
                         {formatPrice(item.askingPrice)}
                       </td>
@@ -462,7 +442,7 @@ export default function AdminInventoryPage() {
                         <div className="flex items-center gap-1">
                           <Link
                             href={`/admin/inventory/${item.id}/edit`}
-                            className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                            className="p-2 text-[#D4451A] hover:bg-[#D4451A]/10 rounded-lg transition-colors"
                             title="Edit"
                           >
                             <FaEdit />

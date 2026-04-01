@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     startDate.setDate(startDate.getDate() - period);
     startDate.setHours(0, 0, 0, 0);
 
-    // Fetch all sales within the period, including coin listing data
+    // Fetch all sales within the period, including product listing data
     const sales = await prisma.sale.findMany({
       where: {
         soldAt: {

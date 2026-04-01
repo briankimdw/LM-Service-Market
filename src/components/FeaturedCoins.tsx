@@ -5,27 +5,25 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { formatPrice } from "@/lib/spot-prices";
 
-interface Coin {
+interface Product {
   id: string;
   title: string;
   slug: string;
-  year: number | null;
-  grade: string | null;
   askingPrice: number;
   images: string;
 }
 
 export default function FeaturedCoins() {
-  const [coins, setCoins] = useState<Coin[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchCoins() {
+    async function fetchProducts() {
       try {
         const res = await fetch("/api/inventory?featured=true&limit=8");
         if (res.ok) {
           const data = await res.json();
-          setCoins(data.listings || data.items || data);
+          setProducts(data.listings || data.items || data);
         }
       } catch {
         // Silently fail
@@ -33,7 +31,7 @@ export default function FeaturedCoins() {
         setLoading(false);
       }
     }
-    fetchCoins();
+    fetchProducts();
   }, []);
 
   if (loading) {
@@ -56,20 +54,20 @@ export default function FeaturedCoins() {
     );
   }
 
-  if (coins.length === 0) {
+  if (products.length === 0) {
     return (
       <div className="text-center py-12 rounded-2xl bg-white border border-[var(--border)]">
-        <p className="text-gray-400 text-lg">Check back soon for featured coins!</p>
+        <p className="text-gray-400 text-lg">Check back soon for featured products!</p>
       </div>
     );
   }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {coins.map((coin) => {
+      {products.map((product) => {
         const images = (() => {
           try {
-            return JSON.parse(coin.images);
+            return JSON.parse(product.images);
           } catch {
             return [];
           }
@@ -78,8 +76,8 @@ export default function FeaturedCoins() {
 
         return (
           <Link
-            key={coin.id}
-            href={`/inventory/${coin.slug}`}
+            key={product.id}
+            href={`/inventory/${product.slug}`}
             className={cn(
               "group bg-white rounded-xl",
               "border border-[var(--border)]",
@@ -91,7 +89,7 @@ export default function FeaturedCoins() {
               {hasImage ? (
                 <img
                   src={images[0]}
-                  alt={coin.title}
+                  alt={product.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               ) : (
@@ -106,15 +104,10 @@ export default function FeaturedCoins() {
             </div>
             <div className="p-5">
               <h3 className="font-serif font-bold text-[#1A3C2A] group-hover:text-[#D4451A] transition-colors duration-300 line-clamp-2 text-sm sm:text-[15px] leading-snug mb-2">
-                {coin.title}
+                {product.title}
               </h3>
-              <div className="flex items-center gap-2 text-xs text-gray-400 mb-3">
-                {coin.year && <span className="font-medium">{coin.year}</span>}
-                {coin.year && coin.grade && <span className="opacity-50">&middot;</span>}
-                {coin.grade && <span className="font-medium">{coin.grade}</span>}
-              </div>
               <p className="text-lg font-bold text-[#D4451A]">
-                {formatPrice(coin.askingPrice)}
+                {formatPrice(product.askingPrice)}
               </p>
             </div>
           </Link>

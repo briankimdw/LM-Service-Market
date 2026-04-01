@@ -167,7 +167,7 @@ export default function FaqAdminPage() {
               setShowForm(true);
             }
           }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4451A] hover:bg-[#b8963e] text-white rounded-lg transition-all font-medium shadow-sm shadow-[#D4451A]/25 text-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4451A] hover:bg-[#B83A15] text-white rounded-lg transition-all font-medium shadow-sm shadow-[#D4451A]/25 text-sm"
         >
           <FaPlus className="text-xs" />
           {showForm ? "Cancel" : "Add FAQ"}
@@ -239,7 +239,7 @@ export default function FaqAdminPage() {
             <button
               type="submit"
               disabled={saving}
-              className="px-4 py-2 bg-[#D4451A] hover:bg-[#b8963e] text-white rounded-lg font-medium text-sm disabled:opacity-50"
+              className="px-4 py-2 bg-[#D4451A] hover:bg-[#B83A15] text-white rounded-lg font-medium text-sm disabled:opacity-50"
             >
               {saving ? "Saving..." : editingId ? "Update" : "Create"}
             </button>

@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "Find answers to common questions about buying, selling, and appraising coins and precious metals.",
+    "Find answers to common questions about our products, services, and store policies.",
 };
 
 async function getFaqs() {
@@ -71,7 +71,7 @@ export default async function FaqPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-gradient-to-r from-[#1A3C2A] to-[#243558] text-white font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#1A3C2A]/25 hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-gradient-to-r from-[#1A3C2A] to-[#245236] text-white font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#1A3C2A]/25 hover:-translate-y-0.5"
           >
             Contact Us
           </Link>

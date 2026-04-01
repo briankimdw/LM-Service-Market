@@ -24,7 +24,7 @@ export async function GET() {
       "Category",
       "Metal",
       "Year",
-      "Mint Mark",
+      "Variant",
       "Grade",
       "Certification",
       "Cert Number",

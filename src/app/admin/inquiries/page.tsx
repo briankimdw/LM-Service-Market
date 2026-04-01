@@ -206,7 +206,7 @@ export default function InquiriesPage() {
             {newCount > 0 ? (
               <span className="text-red-500 font-medium">{newCount} new {newCount === 1 ? "inquiry" : "inquiries"}</span>
             ) : (
-              "Manage contact and appraisal requests"
+              "Manage contact and special order requests"
             )}
           </p>
         </div>
@@ -232,7 +232,7 @@ export default function InquiriesPage() {
               : "text-gray-400 hover:text-gray-600"
           }`}
         >
-          Appraisal Requests
+          Special Order Requests
         </button>
       </div>
 
@@ -246,7 +246,7 @@ export default function InquiriesPage() {
           <div className="bg-white rounded-xl border border-gray-200 p-16 text-center">
             <FaEnvelope className="text-5xl mx-auto mb-4 text-gray-200" />
             <p className="text-gray-500 font-medium">
-              No {activeTab === "contact" ? "contact" : "appraisal"} inquiries yet
+              No {activeTab === "contact" ? "contact" : "special order"} inquiries yet
             </p>
           </div>
         ) : (
@@ -337,7 +337,7 @@ export default function InquiriesPage() {
                             >
                               <img
                                 src={img}
-                                alt={`Appraisal image ${i + 1}`}
+                                alt={`Order request image ${i + 1}`}
                                 className="w-28 h-28 object-cover rounded-lg border border-gray-200 hover:opacity-80 hover:ring-2 hover:ring-[#D4451A] transition-all"
                               />
                             </button>
@@ -412,7 +412,7 @@ export default function InquiriesPage() {
                       <button
                         onClick={() => handleSendReply(inquiry)}
                         disabled={sendingReply === inquiry.id || !replyTexts[inquiry.id]?.trim()}
-                        className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-[#D4451A] hover:bg-[#b8963e] text-white rounded-lg transition-all font-medium disabled:opacity-60 shadow-sm hover:shadow-md"
+                        className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-[#D4451A] hover:bg-[#B83A15] text-white rounded-lg transition-all font-medium disabled:opacity-60 shadow-sm hover:shadow-md"
                       >
                         {sendingReply === inquiry.id ? (
                           <FaSpinner className="animate-spin" />
@@ -454,7 +454,7 @@ export default function InquiriesPage() {
                     <button
                       onClick={() => handleSave(inquiry.id)}
                       disabled={savingId === inquiry.id}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#D4451A] hover:bg-[#b8963e] text-white rounded-lg transition-all font-medium disabled:opacity-60 shadow-sm hover:shadow-md"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#D4451A] hover:bg-[#B83A15] text-white rounded-lg transition-all font-medium disabled:opacity-60 shadow-sm hover:shadow-md"
                     >
                       {savingId === inquiry.id ? <FaSpinner className="animate-spin" /> : <FaSave />}
                       Save Changes
@@ -482,7 +482,7 @@ export default function InquiriesPage() {
           </button>
           <img
             src={lightboxImage}
-            alt="Appraisal image full view"
+            alt="Order request image full view"
             className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           />

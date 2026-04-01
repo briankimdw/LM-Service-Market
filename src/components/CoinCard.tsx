@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { formatPrice } from "@/lib/spot-prices";
-import { cn } from "@/lib/utils";
 import { FaSearch } from "react-icons/fa";
 
 export interface CoinListing {
@@ -28,19 +27,6 @@ export interface CoinListing {
 interface CoinCardProps {
   coin: CoinListing;
   onQuickView: (coin: CoinListing) => void;
-}
-
-function getGradeBadgeColor(grade: string | null | undefined): string {
-  if (!grade) return "bg-gray-100 text-gray-600";
-  if (grade.startsWith("MS-7") || grade.startsWith("PF-7"))
-    return "bg-emerald-50 text-emerald-700 border border-emerald-200";
-  if (grade.startsWith("MS-6") || grade.startsWith("PF-6"))
-    return "bg-blue-50 text-blue-700 border border-blue-200";
-  if (grade.startsWith("AU") || grade.startsWith("EF"))
-    return "bg-amber-50 text-amber-700 border border-amber-200";
-  if (grade.startsWith("VF") || grade.startsWith("F-"))
-    return "bg-orange-50 text-orange-700 border border-orange-200";
-  return "bg-gray-100 text-gray-600";
 }
 
 function parseImages(imagesJson: string): string[] {
@@ -117,25 +103,6 @@ export default function CoinCard({ coin, onQuickView }: CoinCardProps) {
             {coin.title}
           </h3>
         </Link>
-
-        <div className="mt-2 flex items-center gap-2 text-xs text-gray-500">
-          {coin.year && (
-            <span className="font-medium">
-              {coin.year}
-              {coin.mintMark ? `-${coin.mintMark}` : ""}
-            </span>
-          )}
-          {coin.grade && (
-            <span
-              className={cn(
-                "rounded-full px-2 py-0.5 text-[11px] font-semibold",
-                getGradeBadgeColor(coin.grade)
-              )}
-            >
-              {coin.grade}
-            </span>
-          )}
-        </div>
 
         <div className="mt-auto pt-4">
           <p className="text-lg font-bold text-[#D4451A]">

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import {
-  FaCoins,
+  FaBoxOpen,
   FaChartLine,
   FaEnvelope,
   FaStar,
@@ -57,9 +57,9 @@ const statCards = [
   {
     key: "totalListings" as const,
     label: "Total Listings",
-    icon: FaCoins,
-    color: "text-blue-600",
-    bg: "bg-blue-50",
+    icon: FaBoxOpen,
+    color: "text-[#1A3C2A]",
+    bg: "bg-[#1A3C2A]/10",
   },
   {
     key: "activeListings" as const,
@@ -72,8 +72,8 @@ const statCards = [
     key: "soldItems" as const,
     label: "Sold Items",
     icon: FaStar,
-    color: "text-purple-600",
-    bg: "bg-purple-50",
+    color: "text-[#D4451A]",
+    bg: "bg-[#D4451A]/10",
   },
   {
     key: "inventoryValue" as const,
@@ -94,8 +94,8 @@ const statCards = [
     key: "subscribers" as const,
     label: "Subscribers",
     icon: HiUsers,
-    color: "text-indigo-600",
-    bg: "bg-indigo-50",
+    color: "text-[#1A3C2A]",
+    bg: "bg-[#1A3C2A]/10",
   },
 ];
 
@@ -136,7 +136,7 @@ export default function AdminDashboardPage() {
           <h1 className="text-2xl font-bold text-[#1A3C2A]">
             Dashboard
           </h1>
-          <p className="text-sm text-gray-400 mt-0.5">Overview of your coin shop</p>
+          <p className="text-sm text-gray-400 mt-0.5">Overview of your store</p>
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -147,7 +147,7 @@ export default function AdminDashboardPage() {
           </button>
           <button
             onClick={() => setQuickAddOpen(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4451A] hover:bg-[#b8963e] text-white rounded-lg transition-all font-medium shadow-sm shadow-[#D4451A]/25 hover:shadow-md hover:shadow-[#D4451A]/30 text-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4451A] hover:bg-[#B83A15] text-white rounded-lg transition-all font-medium shadow-sm shadow-[#D4451A]/25 hover:shadow-md hover:shadow-[#D4451A]/30 text-sm"
           >
             <FaCamera className="text-xs" /> Quick Add
           </button>

@@ -60,7 +60,7 @@ export default function ContactForm() {
     "border-gray-200",
     "text-[#1A3C2A]",
     "placeholder-gray-400",
-    "focus:outline-none focus:border-[#D4451A] focus:shadow-[0_0_0_3px_rgba(201,168,76,0.1)]",
+    "focus:outline-none focus:border-[#D4451A] focus:shadow-[0_0_0_3px_rgba(212,69,26,0.1)]",
     "transition-all duration-300"
   );
 
@@ -152,9 +152,9 @@ export default function ContactForm() {
           >
             <option value="">Select a subject</option>
             <option value="General Inquiry">General Inquiry</option>
-            <option value="Buying">Buying Coins</option>
-            <option value="Selling">Selling Coins</option>
-            <option value="Appraisal">Appraisal Request</option>
+            <option value="Buying">Product Inquiry</option>
+            <option value="Selling">Wholesale / Vendor Inquiry</option>
+            <option value="Appraisal">Special Order Request</option>
             <option value="Other">Other</option>
           </select>
         </div>
@@ -187,7 +187,7 @@ export default function ContactForm() {
         disabled={status === "loading"}
         className={cn(
           "w-full px-6 py-3.5 rounded-lg font-semibold text-white transition-all duration-300",
-          "bg-gradient-to-r from-[#1A3C2A] to-[#243558]",
+          "bg-gradient-to-r from-[#1A3C2A] to-[#245236]",
           "hover:shadow-lg hover:shadow-[#1A3C2A]/25 hover:-translate-y-0.5",
           "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
         )}

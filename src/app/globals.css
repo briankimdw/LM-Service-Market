@@ -5,29 +5,29 @@
 /* ===== CSS Custom Properties ===== */
 :root {
   /* Brand Colors */
-  --gold: #C9A84C;
-  --gold-light: #e8d48b;
-  --gold-dark: #B8942E;
-  --navy: #1B2A4A;
-  --navy-light: #2a3f6a;
-  --cream: #FAF7F0;
+  --gold: #D4451A;
+  --gold-light: #e8734d;
+  --gold-dark: #B83A15;
+  --navy: #1A3C2A;
+  --navy-light: #245236;
+  --cream: #FFF9F2;
 
   /* Light Mode */
-  --background: #FAF7F0;
-  --foreground: #1B2A4A;
+  --background: #FFF9F2;
+  --foreground: #1A3C2A;
   --surface: #ffffff;
   --surface-alt: #f3f0e8;
   --border: #e2ddd2;
   --muted: #6b7280;
-  --accent: #C9A84C;
-  --accent-hover: #B8942E;
-  --header-bg: #1B2A4A;
-  --header-text: #FAF7F0;
-  --footer-bg: #1B2A4A;
+  --accent: #D4451A;
+  --accent-hover: #B83A15;
+  --header-bg: #1A3C2A;
+  --header-text: #FFF9F2;
+  --footer-bg: #1A3C2A;
   --footer-text: #d1cfc9;
   --card-bg: #ffffff;
-  --card-shadow: rgba(27, 42, 74, 0.08);
-  --card-shadow-hover: rgba(27, 42, 74, 0.16);
+  --card-shadow: rgba(26, 60, 42, 0.08);
+  --card-shadow-hover: rgba(26, 60, 42, 0.16);
 }
 
 /* ===== Base Styles ===== */
@@ -71,7 +71,7 @@
   }
 
   ::selection {
-    background-color: rgba(201, 168, 76, 0.2);
+    background-color: rgba(212, 69, 26, 0.2);
     color: var(--navy);
   }
 }
@@ -82,18 +82,18 @@
   .btn-primary {
     @apply inline-flex items-center justify-center rounded-lg px-7 py-3.5 font-semibold text-white transition-all duration-300;
     background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-    box-shadow: 0 2px 8px rgba(201, 168, 76, 0.25), 0 1px 2px rgba(201, 168, 76, 0.15);
+    box-shadow: 0 2px 8px rgba(212, 69, 26, 0.25), 0 1px 2px rgba(212, 69, 26, 0.15);
   }
 
   .btn-primary:hover {
-    background: linear-gradient(135deg, var(--gold-dark) 0%, #a6831f 100%);
+    background: linear-gradient(135deg, var(--gold-dark) 0%, #9a3010 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(201, 168, 76, 0.35), 0 2px 8px rgba(201, 168, 76, 0.2);
+    box-shadow: 0 8px 24px rgba(212, 69, 26, 0.35), 0 2px 8px rgba(212, 69, 26, 0.2);
   }
 
   .btn-primary:active {
     transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(201, 168, 76, 0.2);
+    box-shadow: 0 2px 4px rgba(212, 69, 26, 0.2);
   }
 
   /* Secondary Button - Refined outline */
@@ -107,20 +107,20 @@
     background-color: var(--gold);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(201, 168, 76, 0.25);
+    box-shadow: 0 8px 24px rgba(212, 69, 26, 0.25);
   }
 
   /* Premium Card */
   .card {
     background-color: var(--card-bg);
     border-radius: 1rem;
-    box-shadow: 0 1px 3px var(--card-shadow), 0 1px 2px rgba(27, 42, 74, 0.04);
+    box-shadow: 0 1px 3px var(--card-shadow), 0 1px 2px rgba(26, 60, 42, 0.04);
     border: 1px solid var(--border);
     transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .card:hover {
-    box-shadow: 0 12px 40px var(--card-shadow-hover), 0 4px 12px rgba(27, 42, 74, 0.06);
+    box-shadow: 0 12px 40px var(--card-shadow-hover), 0 4px 12px rgba(26, 60, 42, 0.06);
     transform: translateY(-4px);
   }
 
@@ -142,11 +142,11 @@
 
   /* Gradients */
   .gold-gradient {
-    background: linear-gradient(135deg, #C9A84C 0%, #e8d48b 50%, #B8942E 100%);
+    background: linear-gradient(135deg, #D4451A 0%, #e8734d 50%, #B83A15 100%);
   }
 
   .navy-gradient {
-    background: linear-gradient(135deg, #1B2A4A 0%, #2a3f6a 50%, #1B2A4A 100%);
+    background: linear-gradient(135deg, #1A3C2A 0%, #245236 50%, #1A3C2A 100%);
   }
 
   /* Premium Input Fields */
@@ -159,7 +159,7 @@
 
   .input-field:focus {
     border-color: var(--gold);
-    box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.12), 0 1px 2px rgba(201, 168, 76, 0.08);
+    box-shadow: 0 0 0 4px rgba(212, 69, 26, 0.12), 0 1px 2px rgba(212, 69, 26, 0.08);
   }
 
   .input-field::placeholder {
@@ -169,15 +169,15 @@
   /* Page Hero Section */
   .page-hero {
     @apply relative overflow-hidden;
-    background: linear-gradient(135deg, #1B2A4A 0%, #243558 40%, #1B2A4A 100%);
+    background: linear-gradient(135deg, #1A3C2A 0%, #245236 40%, #1A3C2A 100%);
   }
 
   .page-hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.05) 0%, transparent 50%);
+    background: radial-gradient(ellipse at 20% 50%, rgba(212, 69, 26, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(212, 69, 26, 0.05) 0%, transparent 50%);
     pointer-events: none;
   }
 
@@ -218,8 +218,8 @@
 
   /* Subtle background pattern for hero sections */
   .hero-pattern {
-    background-image: radial-gradient(circle at 25% 25%, rgba(201, 168, 76, 0.06) 0%, transparent 50%),
-                       radial-gradient(circle at 75% 75%, rgba(201, 168, 76, 0.04) 0%, transparent 50%);
+    background-image: radial-gradient(circle at 25% 25%, rgba(212, 69, 26, 0.06) 0%, transparent 50%),
+                       radial-gradient(circle at 75% 75%, rgba(212, 69, 26, 0.04) 0%, transparent 50%);
   }
 }
 
@@ -437,7 +437,7 @@
 
 /* Gold text shimmer effect */
 .gold-shine {
-  background: linear-gradient(90deg, #C9A84C 0%, #e8d48b 25%, #C9A84C 50%, #e8d48b 75%, #C9A84C 100%);
+  background: linear-gradient(90deg, #D4451A 0%, #e8734d 25%, #D4451A 50%, #e8734d 75%, #D4451A 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

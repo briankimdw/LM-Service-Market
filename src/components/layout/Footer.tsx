@@ -205,7 +205,7 @@ export function Footer({ store }: { store?: StoreInfo | null }) {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email address"
                   required
-                  className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-[#FFF9F2] placeholder-[#FFF9F2]/40 outline-none transition-all duration-300 focus:border-[#D4451A] focus:bg-white/10 focus:shadow-[0_0_0_3px_rgba(201,168,76,0.1)]"
+                  className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-[#FFF9F2] placeholder-[#FFF9F2]/40 outline-none transition-all duration-300 focus:border-[#D4451A] focus:bg-white/10 focus:shadow-[0_0_0_3px_rgba(212,69,26,0.1)]"
                 />
                 <button
                   type="submit"

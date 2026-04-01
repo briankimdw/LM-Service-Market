@@ -31,7 +31,7 @@ export default async function ContactPage() {
             Contact Us
           </h1>
           <p className="text-[#FFF9F2]/60 text-lg max-w-2xl mx-auto">
-            Have a question or want to sell your coins? Get in touch with us today.
+            Have a question or need something special? Get in touch with us today.
           </p>
         </div>
       </section>

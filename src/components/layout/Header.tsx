@@ -66,7 +66,7 @@ export function Header({ store }: { store?: StoreInfo | null }) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  const shopName = store?.shopName || "Coin Shop";
+  const shopName = store?.shopName || "L & M Service Market";
   const initials = useMemo(() => {
     const words = shopName.split(/\s+/).filter(Boolean);
     if (words.length >= 2) return (words[0][0] + words[1][0]).toUpperCase();

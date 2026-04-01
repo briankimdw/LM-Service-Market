@@ -6,7 +6,7 @@ export interface SpotPrices {
   updatedAt: string;
 }
 
-// Fetches live spot prices from metals.live (free, no API key)
+// Fetches live metal spot prices from metals.live (free, no API key) - used for reference pricing
 export async function fetchSpotPrices(): Promise<SpotPrices> {
   try {
     const res = await fetch("https://api.metals.live/v1/spot", {

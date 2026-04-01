@@ -62,7 +62,7 @@ export default function NewsletterForm() {
             "border-white/20",
             "text-white",
             "placeholder-white/40",
-            "focus:outline-none focus:border-[#D4451A] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(201,168,76,0.15)]",
+            "focus:outline-none focus:border-[#D4451A] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(212,69,26,0.15)]",
             "transition-all duration-300"
           )}
         />

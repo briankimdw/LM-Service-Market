@@ -1,13 +1,13 @@
-# CoinShop Pro - Professional Coin Shop Website Template
+# L & M Service Market - Convenience Store Website
 
-**The complete, ready-to-deploy website solution for coin shops and precious metals dealers.**
+**A modern, full-featured website for L & M Service Market, your neighborhood convenience store in Midtown Atlanta.**
 
-Turn any coin shop into a modern online presence in under an hour. CoinShop Pro is a white-label website template built specifically for coin dealers, featuring inventory management, customer engagement tools, and a full admin dashboard -- all backed by a modern tech stack.
+Built with Next.js, Tailwind CSS, and Supabase, featuring inventory management, customer engagement tools, and a full admin dashboard.
 
-- Full-featured inventory browser with search, filters, and quick view
-- Built-in payout estimator and spot price ticker
+- Full-featured product browser with search, filters, and quick view
+- Built-in pricing tools and product management
 - Appointment booking system with configurable time slots
-- Appraisal request forms with photo upload
+- Special order request forms with photo upload
 - Blog, FAQ, and testimonials management
 - Admin dashboard with sales tracking and charts
 - Fully responsive design optimized for mobile
@@ -20,8 +20,8 @@ Turn any coin shop into a modern online presence in under an hour. CoinShop Pro 
 
 | | URL | Credentials |
 |---|---|---|
-| **Customer Site** | [coin-shop-template.vercel.app](https://coin-shop-template.vercel.app) | -- |
-| **Admin Dashboard** | [coin-shop-template.vercel.app/admin/login](https://coin-shop-template.vercel.app/admin/login) | `admin@coinshop.com` / `admin123` |
+| **Customer Site** | [lm-service-market.vercel.app](https://lm-service-market.vercel.app) | -- |
+| **Admin Dashboard** | [lm-service-market.vercel.app/admin/login](https://lm-service-market.vercel.app/admin/login) | `admin@lmmarket.com` / `admin123` |
 
 ---
 
@@ -29,39 +29,38 @@ Turn any coin shop into a modern online presence in under an hour. CoinShop Pro 
 
 ### Customer-Facing Pages
 
-- **Homepage** -- Hero banner, featured coins carousel, services grid, testimonials, newsletter signup, and spot price ticker
-- **Inventory Browser** -- Searchable catalog with filters by category, metal, grade, certification, and price range. Includes grid/list view toggle and quick-view modal
-- **Coin Detail Pages** -- Individual listing pages with image gallery, specifications, and SEO-friendly slugs
-- **We Buy Page** -- Interactive payout estimator that calculates offers based on live spot prices, buy premiums, and item type
-- **Appraisal Requests** -- Multi-step form with photo upload (client-side compression), contact preferences, and item descriptions
+- **Homepage** -- Hero banner, featured products carousel, services grid, testimonials, newsletter signup, and price ticker
+- **Product Browser** -- Searchable catalog with filters by category, type, and price range. Includes grid/list view toggle and quick-view modal
+- **Product Detail Pages** -- Individual listing pages with image gallery, specifications, and SEO-friendly slugs
+- **We Buy Page** -- Interactive estimator that calculates offers based on current pricing
+- **Special Order Requests** -- Multi-step form with photo upload (client-side compression), contact preferences, and item descriptions
 - **Appointment Booking** -- Calendar-based scheduling with configurable time slots, appointment types, and advance booking limits
 - **Blog** -- Full blog with rich text content, cover images, tags, and SEO meta fields
 - **FAQ** -- Accordion-style FAQ page with admin-managed questions and answers
 - **Testimonials** -- Customer review display with star ratings
 - **Contact Page** -- Contact form with phone, email, address, business hours, and optional Google Maps embed
 - **Newsletter Signup** -- Email collection integrated throughout the site
-- **Spot Price Ticker** -- Live gold, silver, platinum, and palladium spot prices displayed in a top bar
 - **SEO** -- Dynamic sitemap generation, robots.txt, JSON-LD structured data, and per-page meta tags
 - **Legal Pages** -- Privacy policy and terms of service templates
 
 ### Admin Dashboard
 
-- **Inventory Management** -- Full CRUD for coin listings with image upload, grading fields, cost basis tracking, and featured/sold status. Includes Quick Add modal for fast entry
+- **Inventory Management** -- Full CRUD for product listings with image upload, detail fields, cost basis tracking, and featured/sold status. Includes Quick Add modal for fast entry
 - **Sales Tracking** -- Record sales against inventory items, view profit margins, and visualize revenue with interactive charts
 - **Blog Management** -- Create, edit, publish/unpublish blog posts with rich content and SEO fields
-- **Inquiry Management** -- View and respond to contact form submissions and appraisal requests directly from the dashboard, with email reply functionality
+- **Inquiry Management** -- View and respond to contact form submissions and special order requests directly from the dashboard, with email reply functionality
 - **Appointment Management** -- View, confirm, and manage customer appointments. Confirm, reschedule, or cancel bookings. Configure time slots and appointment types
 - **Testimonial Management** -- Add and manage customer testimonials with star ratings
 - **FAQ Management** -- Create, edit, and reorder frequently asked questions
-- **Want-to-Buy List** -- Maintain a public list of items the shop is actively seeking to purchase
-- **Spot Price Configuration** -- Toggle automatic spot price fetching, set manual overrides, and configure buy/sell premiums per metal
+- **Want-to-Buy List** -- Maintain a public list of items the store is actively seeking to stock
+- **Price Configuration** -- Toggle automatic price fetching, set manual overrides, and configure pricing per product type
 - **Store Settings** -- Update shop name, address, hours, logo, banner image, tagline, about text, social media links, Google Maps embed, SMTP configuration, and Google Reviews integration
 - **Google Reviews** -- Pull in reviews from Google Places using your Place ID and API key
 
 ### Technical Features
 
 - **Framework** -- Next.js 14 with App Router and React Server Components
-- **Styling** -- Tailwind CSS with custom gold/navy/cream color palette
+- **Styling** -- Tailwind CSS with custom color palette
 - **Database** -- PostgreSQL via Supabase with Prisma ORM
 - **Authentication** -- NextAuth.js with credential-based admin login
 - **Image Handling** -- Client-side image compression before upload, stored as base64
@@ -83,8 +82,8 @@ Turn any coin shop into a modern online presence in under an hour. CoinShop Pro 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-org/coin-shop-template.git
-cd coin-shop-template
+git clone <repo-url> lm-service-market
+cd lm-service-market
 ```
 
 ### 2. Install dependencies
@@ -132,10 +131,10 @@ npx prisma db push
 ### 6. Seed default data
 
 ```bash
-npm run prisma:seed
+npm run seed
 ```
 
-This creates the default admin user (`admin@coinshop.com` / `admin123`), sample store settings, and appointment configuration.
+This creates the default admin user (`admin@lmmarket.com` / `admin123`), sample store settings, and appointment configuration.
 
 ### 7. Run the development server
 
@@ -174,7 +173,7 @@ In the Vercel project settings, add the following environment variables:
 | `DATABASE_URL` | Your Supabase pooled connection string (port 6543) |
 | `DIRECT_URL` | Your Supabase direct connection string (port 5432) |
 | `NEXTAUTH_SECRET` | A secure random string |
-| `NEXTAUTH_URL` | Your production URL (e.g., `https://yourshop.vercel.app`) |
+| `NEXTAUTH_URL` | Your production URL (e.g., `https://lmservicemarket.com`) |
 | `SITE_URL` | Same as `NEXTAUTH_URL` |
 
 ### 4. Deploy
@@ -185,104 +184,21 @@ After the first deploy, run the database seed against your production database (
 
 ---
 
-## Client Onboarding Checklist
-
-Use this checklist when setting up CoinShop Pro for a new coin shop client:
-
-### Infrastructure
-
-- [ ] Create a new Supabase project for the client
-- [ ] Create a new Vercel project linked to the repo (or fork)
-- [ ] Set all required environment variables in Vercel
-- [ ] Push the database schema (`npx prisma db push`)
-- [ ] Seed default data (`npm run prisma:seed`)
-- [ ] Verify the site loads and admin login works
-
-### Security
-
-- [ ] Change the default admin password immediately after first login
-- [ ] Generate a unique `NEXTAUTH_SECRET` for this deployment
-- [ ] Ensure `NEXTAUTH_URL` matches the production domain
-
-### Store Configuration (via Admin > Settings)
-
-- [ ] Set the shop name and tagline
-- [ ] Enter the full business address
-- [ ] Set phone number and email
-- [ ] Upload the shop logo
-- [ ] Upload a hero banner image
-- [ ] Write the "About" text and owner bio
-- [ ] Set business hours for each day of the week
-- [ ] Add social media links (Facebook, Instagram, Twitter)
-- [ ] Set years in business and memberships/certifications
-
-### Features Setup
-
-- [ ] Configure SMTP for email notifications (see instructions below)
-- [ ] Add Google Maps embed URL for the contact page
-- [ ] Set up Google Reviews integration (Place ID and API key) -- optional
-- [ ] Configure spot price buy/sell premiums per metal
-- [ ] Add initial inventory items
-- [ ] Create FAQ entries
-- [ ] Add customer testimonials
-- [ ] Write at least one blog post
-- [ ] Set up the want-to-buy list
-
-### Domain (optional)
-
-- [ ] Register or transfer a custom domain
-- [ ] Add the domain to the Vercel project
-- [ ] Update `NEXTAUTH_URL` and `SITE_URL` to the custom domain
-
-### Gmail SMTP Setup (Recommended)
-
-1. Enable 2-factor authentication on the shop's Gmail account
-2. Go to [Google App Passwords](https://myaccount.google.com/apppasswords)
-3. Generate an app password for "Mail"
-4. In Admin > Settings, enter:
-   - **SMTP Host**: `smtp.gmail.com`
-   - **SMTP Port**: `587`
-   - **SMTP User**: `shop@gmail.com`
-   - **SMTP Password**: The generated app password
-   - **SMTP From**: `"Shop Name" <shop@gmail.com>`
-
----
-
-## Environment Variables Reference
-
-| Variable | Required | Description |
-|---|---|---|
-| `DATABASE_URL` | Yes | Supabase PostgreSQL connection string (pooled, port 6543). Must include `?pgbouncer=true`. |
-| `DIRECT_URL` | Yes | Supabase PostgreSQL direct connection string (port 5432). Used by Prisma for migrations. |
-| `NEXTAUTH_SECRET` | Yes | Secret key for NextAuth.js session encryption. Generate with `openssl rand -base64 32`. |
-| `NEXTAUTH_URL` | Yes | The canonical URL of the site (e.g., `https://yourshop.com`). |
-| `SITE_URL` | No | Used for sitemap and SEO meta tags. Defaults to `NEXTAUTH_URL` if not set. |
-| `SMTP_HOST` | No | SMTP server hostname (e.g., `smtp.gmail.com`). Can also be set in Admin > Settings. |
-| `SMTP_PORT` | No | SMTP server port (typically `587` for TLS). Can also be set in Admin > Settings. |
-| `SMTP_USER` | No | SMTP username/email. Can also be set in Admin > Settings. |
-| `SMTP_PASS` | No | SMTP password or app password. Can also be set in Admin > Settings. |
-| `SMTP_FROM` | No | Sender address for emails. Can also be set in Admin > Settings. |
-| `GOOGLE_MAPS_EMBED_URL` | No | Google Maps embed URL for the contact page. Can also be set in Admin > Settings. |
-
-> **Note:** SMTP settings can be configured either via environment variables or through the Admin Settings page. Admin Settings values take precedence when both are set.
-
----
-
 ## Admin Panel Guide
 
-Access the admin panel at `/admin/login`. Default credentials after seeding: `admin@coinshop.com` / `admin123`.
+Access the admin panel at `/admin/login`. Default credentials after seeding: `admin@lmmarket.com` / `admin123`.
 
 | Section | Path | Description |
 |---|---|---|
 | **Dashboard** | `/admin` | Overview with inventory stats, recent sales, revenue chart, and quick-add modal |
-| **Inventory** | `/admin/inventory` | Manage all coin listings. Add, edit, mark as sold, or delete items. Upload images and set grades, certifications, and pricing |
+| **Inventory** | `/admin/inventory` | Manage all product listings. Add, edit, mark as sold, or delete items. Upload images and set details and pricing |
 | **Blog** | `/admin/blog` | Write and manage blog posts. Supports rich text, cover images, tags, and SEO fields |
-| **Inquiries** | `/admin/inquiries` | View contact form submissions and appraisal requests. Reply directly via email from the dashboard |
+| **Inquiries** | `/admin/inquiries` | View contact form submissions and special order requests. Reply directly via email from the dashboard |
 | **Appointments** | `/admin/appointments` | Manage customer appointments. Confirm, reschedule, or cancel bookings. Configure time slots and appointment types |
 | **Testimonials** | `/admin/testimonials` | Add and manage customer testimonials with star ratings |
 | **FAQ** | `/admin/faq` | Create, edit, and reorder frequently asked questions |
-| **Want to Buy** | `/admin/want-to-buy` | Maintain a list of items the shop is actively seeking to purchase |
-| **Spot Prices** | `/admin/spot-prices` | Configure live spot price fetching, set manual overrides, and adjust buy/sell premiums |
+| **Want to Buy** | `/admin/want-to-buy` | Maintain a list of items the store is actively seeking to stock |
+| **Spot Prices** | `/admin/spot-prices` | Configure live price fetching, set manual overrides, and adjust pricing |
 | **Settings** | `/admin/settings` | Store name, address, hours, logo, social links, SMTP, Google Maps, and Google Reviews configuration |
 
 ---
@@ -316,16 +232,16 @@ colors: {
 
 **`src/app/globals.css`** -- CSS custom properties for surfaces, borders, and shadows. Modify the `:root` block to change the overall theme.
 
-### Modifying Categories, Grades, and Services
+### Modifying Categories and Product Types
 
 Edit **`src/config/shop.ts`** to change:
 
-- `categories` -- Inventory filter categories (e.g., "US Coins", "Bullion", "World Coins")
-- `metals` -- Metal type options (e.g., "Gold", "Silver", "Platinum")
-- `grades` -- Coin grading scale options (AG-3 through MS-70, PF-60 through PF-70)
-- `certServices` -- Certification services (PCGS, NGC, ANACS, ICG, Raw)
+- `categories` -- Inventory filter categories (e.g., "Snacks", "Beverages", "Groceries")
+- `metals` -- Material type options (if applicable)
+- `grades` -- Condition/quality options
+- `certServices` -- Certification services (if applicable)
 - `services` -- Services listed on the homepage
-- `payoutEstimates` -- Default payout percentages for the We Buy estimator
+- `payoutEstimates` -- Default payout percentages for the estimator
 
 ### Adding or Removing Pages
 
@@ -366,7 +282,7 @@ The template uses **Playfair Display** (serif, for headings) and **Inter** (sans
 ## Project Structure
 
 ```
-coin-shop/
+lm-service-market/
 ├── prisma/
 │   ├── schema.prisma          # Database schema (all models)
 │   └── seed.ts                # Default data seeder
@@ -376,11 +292,11 @@ coin-shop/
 │   │   │   ├── appointments/  # Appointment management
 │   │   │   ├── blog/          # Blog post management
 │   │   │   ├── faq/           # FAQ management
-│   │   │   ├── inquiries/     # Contact & appraisal inbox
-│   │   │   ├── inventory/     # Coin listing management
+│   │   │   ├── inquiries/     # Contact & special order inbox
+│   │   │   ├── inventory/     # Product listing management
 │   │   │   ├── login/         # Admin login page
 │   │   │   ├── settings/      # Store settings
-│   │   │   ├── spot-prices/   # Spot price configuration
+│   │   │   ├── spot-prices/   # Price configuration
 │   │   │   ├── testimonials/  # Testimonial management
 │   │   │   ├── want-to-buy/   # Want-to-buy list management
 │   │   │   ├── layout.tsx     # Admin layout with sidebar
@@ -388,15 +304,15 @@ coin-shop/
 │   │   ├── api/               # API routes
 │   │   ├── about/             # About page
 │   │   ├── appointments/      # Appointment booking page
-│   │   ├── appraisal/         # Appraisal request page
+│   │   ├── appraisal/         # Special order request page
 │   │   ├── blog/              # Blog listing and detail pages
 │   │   ├── contact/           # Contact page
 │   │   ├── faq/               # FAQ page
-│   │   ├── inventory/         # Inventory listing and detail pages
+│   │   ├── inventory/         # Product listing and detail pages
 │   │   ├── privacy/           # Privacy policy
 │   │   ├── terms/             # Terms of service
 │   │   ├── testimonials/      # Testimonials page
-│   │   ├── we-buy/            # We Buy page with payout estimator
+│   │   ├── we-buy/            # We Buy page with estimator
 │   │   ├── globals.css        # Global styles and CSS variables
 │   │   ├── layout.tsx         # Root layout
 │   │   ├── page.tsx           # Homepage
@@ -409,23 +325,23 @@ coin-shop/
 │   │   ├── AppointmentBooking.tsx
 │   │   ├── AppraisalForm.tsx
 │   │   ├── BlogCard.tsx
-│   │   ├── CoinCard.tsx
+│   │   ├── CoinCard.tsx       # Product card component
 │   │   ├── ContactForm.tsx
 │   │   ├── FaqAccordion.tsx
-│   │   ├── FeaturedCoins.tsx
+│   │   ├── FeaturedCoins.tsx  # Featured products component
 │   │   ├── InventoryBrowser.tsx
 │   │   ├── NewsletterForm.tsx
 │   │   ├── PayoutEstimator.tsx
 │   │   ├── QuickViewModal.tsx
 │   │   └── TestimonialCard.tsx
 │   ├── config/
-│   │   └── shop.ts            # Shop configuration (categories, grades, services)
+│   │   └── shop.ts            # Store configuration (categories, product types, services)
 │   └── lib/
 │       ├── auth.ts            # NextAuth configuration
 │       ├── email.ts           # Email sending utilities
 │       ├── image-utils.ts     # Image compression utilities
 │       ├── prisma.ts          # Prisma client singleton
-│       ├── spot-prices.ts     # Spot price fetching logic
+│       ├── spot-prices.ts     # Price fetching logic
 │       └── utils.ts           # General utilities
 ├── .env.example               # Environment variable template
 ├── next.config.mjs            # Next.js configuration
@@ -444,17 +360,11 @@ coin-shop/
 | `npm run build` | Build the production application |
 | `npm run start` | Start the production server |
 | `npm run lint` | Run ESLint |
-| `npm run prisma:push` | Push the Prisma schema to the database |
-| `npm run prisma:seed` | Seed the database with default data |
-| `npm run prisma:generate` | Regenerate the Prisma client |
-| `npm run prisma:studio` | Open Prisma Studio (database GUI) |
 | `npm run setup` | Run push + generate + seed in one command |
+| `npm run seed` | Seed the database with default data |
 
 ---
 
 ## License
 
-This is a commercial template. Redistribution, resale, or sharing of the source code is prohibited without a valid license. Each deployment requires a separate license.
-
-For licensing inquiries, contact the template author.
-# force rebuild
+This is a commercial project. All rights reserved.

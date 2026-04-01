@@ -27,7 +27,6 @@ export default function QuickAddModal({ isOpen, onClose, onCreated }: QuickAddMo
   const [title, setTitle] = useState("");
   const [askingPrice, setAskingPrice] = useState("");
   const [category, setCategory] = useState(shopConfig.categories[0]);
-  const [metal, setMetal] = useState("");
   const [saving, setSaving] = useState(false);
 
   if (!isOpen) return null;
@@ -39,7 +38,6 @@ export default function QuickAddModal({ isOpen, onClose, onCreated }: QuickAddMo
     setTitle("");
     setAskingPrice("");
     setCategory(shopConfig.categories[0]);
-    setMetal("");
     setSaving(false);
     onClose();
   };
@@ -74,7 +72,6 @@ export default function QuickAddModal({ isOpen, onClose, onCreated }: QuickAddMo
       formData.append("title", title.trim());
       formData.append("askingPrice", askingPrice);
       formData.append("category", category);
-      if (metal) formData.append("metal", metal);
 
       for (const photo of capturedPhotos) {
         formData.append("images", photo);
@@ -97,7 +94,7 @@ export default function QuickAddModal({ isOpen, onClose, onCreated }: QuickAddMo
         resetAndClose();
       }
     } catch {
-      alert("Failed to save listing. Please try again.");
+      alert("Failed to save product. Please try again.");
       setSaving(false);
     }
   };
@@ -181,7 +178,7 @@ export default function QuickAddModal({ isOpen, onClose, onCreated }: QuickAddMo
               <button
                 onClick={() => setStep(2)}
                 disabled={capturedPhotos.length === 0}
-                className="w-full flex items-center justify-center gap-2 py-3 bg-[#D4451A] hover:bg-[#b8963e] disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-lg font-semibold transition-colors"
+                className="w-full flex items-center justify-center gap-2 py-3 bg-[#D4451A] hover:bg-[#B83A15] disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-lg font-semibold transition-colors"
               >
                 Continue <FaArrowRight className="text-xs" />
               </button>
@@ -213,7 +210,7 @@ export default function QuickAddModal({ isOpen, onClose, onCreated }: QuickAddMo
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  placeholder="e.g. 1921 Morgan Silver Dollar"
+                  placeholder="e.g. Doritos Nacho Cheese 9.25oz"
                   className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4451A] focus:border-[#D4451A] outline-none transition-all text-sm"
                 />
               </div>
@@ -257,31 +254,12 @@ export default function QuickAddModal({ isOpen, onClose, onCreated }: QuickAddMo
                 </select>
               </div>
 
-              {/* Metal */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Metal
-                </label>
-                <select
-                  value={metal}
-                  onChange={(e) => setMetal(e.target.value)}
-                  className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4451A] focus:border-[#D4451A] outline-none transition-all text-sm bg-white"
-                >
-                  <option value="">Select metal...</option>
-                  {shopConfig.metals.map((m) => (
-                    <option key={m} value={m}>
-                      {m}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
               {/* Action buttons */}
               <div className="flex gap-3 pt-2">
                 <button
                   onClick={() => handleSave(false)}
                   disabled={saving || !title.trim() || !askingPrice}
-                  className="flex-1 py-3 bg-[#D4451A] hover:bg-[#b8963e] disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-lg font-semibold transition-colors text-sm flex items-center justify-center gap-2"
+                  className="flex-1 py-3 bg-[#D4451A] hover:bg-[#B83A15] disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-lg font-semibold transition-colors text-sm flex items-center justify-center gap-2"
                 >
                   {saving ? (
                     <FaSpinner className="animate-spin" />

@@ -15,12 +15,6 @@ export default function EditInventoryPage() {
   const [form, setForm] = useState({
     title: "",
     category: "",
-    metal: "",
-    year: "",
-    mintMark: "",
-    grade: "",
-    certification: "",
-    certNumber: "",
     description: "",
     costBasis: "",
     askingPrice: "",
@@ -40,12 +34,6 @@ export default function EditInventoryPage() {
         setForm({
           title: data.title || "",
           category: data.category || "",
-          metal: data.metal || "",
-          year: data.year?.toString() || "",
-          mintMark: data.mintMark || "",
-          grade: data.grade || "",
-          certification: data.certification || "",
-          certNumber: data.certNumber || "",
           description: data.description || "",
           costBasis: data.costBasis?.toString() || "",
           askingPrice: data.askingPrice?.toString() || "",
@@ -148,9 +136,9 @@ export default function EditInventoryPage() {
     <div>
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-[#1A3C2A]">
-          Edit Listing
+          Edit Product
         </h1>
-        <p className="text-sm text-gray-400 mt-0.5">Update inventory item details</p>
+        <p className="text-sm text-gray-400 mt-0.5">Update product details</p>
       </div>
 
       <form
@@ -172,126 +160,24 @@ export default function EditInventoryPage() {
           />
         </div>
 
-        {/* Category & Metal */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Category
-            </label>
-            <select
-              name="category"
-              value={form.category}
-              onChange={handleChange}
-              className="input-field w-full"
-            >
-              <option value="">Select category</option>
-              {shopConfig.categories.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Metal
-            </label>
-            <select
-              name="metal"
-              value={form.metal}
-              onChange={handleChange}
-              className="input-field w-full"
-            >
-              <option value="">Select metal</option>
-              {shopConfig.metals.map((m) => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {/* Year & Mint Mark */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Year
-            </label>
-            <input
-              type="number"
-              name="year"
-              value={form.year}
-              onChange={handleChange}
-              className="input-field w-full"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Mint Mark
-            </label>
-            <input
-              type="text"
-              name="mintMark"
-              value={form.mintMark}
-              onChange={handleChange}
-              className="input-field w-full"
-            />
-          </div>
-        </div>
-
-        {/* Grade & Certification */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Grade
-            </label>
-            <select
-              name="grade"
-              value={form.grade}
-              onChange={handleChange}
-              className="input-field w-full"
-            >
-              <option value="">Select grade</option>
-              {shopConfig.grades.map((g) => (
-                <option key={g} value={g}>
-                  {g}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Certification
-            </label>
-            <select
-              name="certification"
-              value={form.certification}
-              onChange={handleChange}
-              className="input-field w-full"
-            >
-              <option value="">Select service</option>
-              {shopConfig.certServices.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {/* Cert Number */}
+        {/* Category */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Cert Number
+            Category
           </label>
-          <input
-            type="text"
-            name="certNumber"
-            value={form.certNumber}
+          <select
+            name="category"
+            value={form.category}
             onChange={handleChange}
             className="input-field w-full"
-          />
+          >
+            <option value="">Select category</option>
+            {shopConfig.categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Description */}
@@ -431,7 +317,7 @@ export default function EditInventoryPage() {
             htmlFor="featured"
             className="text-sm font-medium text-gray-700"
           >
-            Featured Listing
+            Featured Product
           </label>
         </div>
 
@@ -440,14 +326,14 @@ export default function EditInventoryPage() {
           <button
             type="submit"
             disabled={loading}
-            className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#D4451A] hover:bg-[#b8963e] text-white font-semibold rounded-lg transition-colors disabled:opacity-60"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#D4451A] hover:bg-[#B83A15] text-white font-semibold rounded-lg transition-colors disabled:opacity-60"
           >
             {loading ? (
               <FaSpinner className="animate-spin" />
             ) : (
               <FaSave />
             )}
-            {loading ? "Saving..." : "Update Listing"}
+            {loading ? "Saving..." : "Update Product"}
           </button>
           <button
             type="button"

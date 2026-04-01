@@ -32,7 +32,7 @@ function AdminLayoutInner({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [shopName, setShopName] = useState("Coin Shop");
+  const [shopName, setShopName] = useState("L & M Service Market");
 
   useEffect(() => {
     fetch("/api/settings")

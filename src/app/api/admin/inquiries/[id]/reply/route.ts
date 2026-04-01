@@ -34,7 +34,7 @@ export async function POST(
     }
 
     // Load shop name from settings for the email template
-    let shopName = "Vintage Coin Shop";
+    let shopName = "L & M Service Market";
     try {
       const settings = await prisma.storeSettings.findUnique({
         where: { id: "default" },

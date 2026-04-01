@@ -57,7 +57,7 @@ export default function BlogManagementPage() {
         </div>
         <Link
           href="/admin/blog/new"
-          className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4451A] hover:bg-[#b8963e] text-white rounded-lg transition-all font-medium shadow-sm shadow-[#D4451A]/25 text-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4451A] hover:bg-[#B83A15] text-white rounded-lg transition-all font-medium shadow-sm shadow-[#D4451A]/25 text-sm"
         >
           <FaPlus className="text-xs" /> New Post
         </Link>
@@ -128,7 +128,7 @@ export default function BlogManagementPage() {
                       <div className="flex items-center gap-1">
                         <Link
                           href={`/admin/blog/${post.id}/edit`}
-                          className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                          className="p-2 text-[#D4451A] hover:bg-[#D4451A]/10 rounded-lg transition-colors"
                           title="Edit"
                         >
                           <FaEdit />

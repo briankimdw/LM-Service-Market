@@ -565,7 +565,7 @@ export default function SettingsPage() {
               onChange={handleChange}
               rows={3}
               className="input-field w-full"
-              placeholder={"ANA\nPNG\nPCGS Authorized Dealer"}
+              placeholder={"BBB Member\nLocal Chamber of Commerce\nFood Safety Certified"}
             />
           </div>
         </Section>
@@ -841,7 +841,7 @@ export default function SettingsPage() {
           <button
             type="submit"
             disabled={saving}
-            className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#D4451A] hover:bg-[#b8963e] text-white font-semibold rounded-lg transition-colors disabled:opacity-60"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#D4451A] hover:bg-[#B83A15] text-white font-semibold rounded-lg transition-colors disabled:opacity-60"
           >
             {saving ? (
               <FaSpinner className="animate-spin" />

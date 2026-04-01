@@ -12,12 +12,6 @@ export default function NewInventoryPage() {
   const [form, setForm] = useState({
     title: "",
     category: "",
-    metal: "",
-    year: "",
-    mintMark: "",
-    grade: "",
-    certification: "",
-    certNumber: "",
     description: "",
     costBasis: "",
     askingPrice: "",
@@ -97,9 +91,9 @@ export default function NewInventoryPage() {
     <div>
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-[#1A3C2A]">
-          Add New Listing
+          Add New Product
         </h1>
-        <p className="text-sm text-gray-400 mt-0.5">Create a new inventory item</p>
+        <p className="text-sm text-gray-400 mt-0.5">Create a new product listing</p>
       </div>
 
       <form
@@ -121,126 +115,24 @@ export default function NewInventoryPage() {
           />
         </div>
 
-        {/* Category & Metal */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Category
-            </label>
-            <select
-              name="category"
-              value={form.category}
-              onChange={handleChange}
-              className="input-field w-full"
-            >
-              <option value="">Select category</option>
-              {shopConfig.categories.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Metal
-            </label>
-            <select
-              name="metal"
-              value={form.metal}
-              onChange={handleChange}
-              className="input-field w-full"
-            >
-              <option value="">Select metal</option>
-              {shopConfig.metals.map((m) => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {/* Year & Mint Mark */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Year
-            </label>
-            <input
-              type="number"
-              name="year"
-              value={form.year}
-              onChange={handleChange}
-              className="input-field w-full"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Mint Mark
-            </label>
-            <input
-              type="text"
-              name="mintMark"
-              value={form.mintMark}
-              onChange={handleChange}
-              className="input-field w-full"
-            />
-          </div>
-        </div>
-
-        {/* Grade & Certification */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Grade
-            </label>
-            <select
-              name="grade"
-              value={form.grade}
-              onChange={handleChange}
-              className="input-field w-full"
-            >
-              <option value="">Select grade</option>
-              {shopConfig.grades.map((g) => (
-                <option key={g} value={g}>
-                  {g}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Certification
-            </label>
-            <select
-              name="certification"
-              value={form.certification}
-              onChange={handleChange}
-              className="input-field w-full"
-            >
-              <option value="">Select service</option>
-              {shopConfig.certServices.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {/* Cert Number */}
+        {/* Category */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Cert Number
+            Category
           </label>
-          <input
-            type="text"
-            name="certNumber"
-            value={form.certNumber}
+          <select
+            name="category"
+            value={form.category}
             onChange={handleChange}
             className="input-field w-full"
-          />
+          >
+            <option value="">Select category</option>
+            {shopConfig.categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Description */}
@@ -362,7 +254,7 @@ export default function NewInventoryPage() {
             htmlFor="featured"
             className="text-sm font-medium text-gray-700"
           >
-            Featured Listing
+            Featured Product
           </label>
         </div>
 
@@ -371,14 +263,14 @@ export default function NewInventoryPage() {
           <button
             type="submit"
             disabled={loading}
-            className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#D4451A] hover:bg-[#b8963e] text-white font-semibold rounded-lg transition-colors disabled:opacity-60"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#D4451A] hover:bg-[#B83A15] text-white font-semibold rounded-lg transition-colors disabled:opacity-60"
           >
             {loading ? (
               <FaSpinner className="animate-spin" />
             ) : (
               <FaSave />
             )}
-            {loading ? "Saving..." : "Save Listing"}
+            {loading ? "Saving..." : "Save Product"}
           </button>
           <button
             type="button"

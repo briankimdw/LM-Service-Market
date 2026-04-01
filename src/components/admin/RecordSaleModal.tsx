@@ -341,7 +341,7 @@ export default function RecordSaleModal({
                   onChange={(e) => setNotes(e.target.value)}
                   rows={2}
                   className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4451A]/50 focus:border-[#D4451A] outline-none transition-all text-sm resize-none"
-                  placeholder="e.g. Sold at coin show, buyer info..."
+                  placeholder="e.g. Regular customer, bulk purchase..."
                 />
               </div>
 
@@ -363,7 +363,7 @@ export default function RecordSaleModal({
                 <button
                   onClick={handleSubmit}
                   disabled={submitting}
-                  className="flex-1 px-4 py-2.5 bg-[#D4451A] hover:bg-[#b8963e] text-white rounded-lg transition-all font-medium shadow-sm hover:shadow-md text-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="flex-1 px-4 py-2.5 bg-[#D4451A] hover:bg-[#B83A15] text-white rounded-lg transition-all font-medium shadow-sm hover:shadow-md text-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {submitting && <FaSpinner className="animate-spin" />}
                   Record Sale
