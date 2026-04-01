@@ -14,7 +14,7 @@ import {
   FaTicketAlt,
   FaHome as FaHousehold,
 } from "react-icons/fa";
-import { FaShieldAlt, FaAward, FaHandshake, FaStar } from "react-icons/fa";
+import { FaShieldAlt, FaAward, FaHandshake, FaStar, FaBullhorn } from "react-icons/fa";
 
 export const dynamic = 'force-dynamic';
 
@@ -173,6 +173,18 @@ export default async function HomePage() {
         </div>
       </div>
 
+      {/* ====== OWNER MESSAGE BANNER ====== */}
+      {settings.ownerMessageActive && settings.ownerMessage && (
+        <div className="bg-[#D4451A] text-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+            <div className="flex items-center justify-center gap-3 text-center">
+              <FaBullhorn className="h-4 w-4 flex-shrink-0 animate-pulse" />
+              <p className="text-sm sm:text-base font-medium">{settings.ownerMessage}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ====== FEATURED PRODUCTS ====== */}
       <section className="py-20 bg-[var(--surface-alt)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -278,6 +290,58 @@ export default async function HomePage() {
           </div>
         </section>
       )}
+
+      {/* ====== REVIEW US CTA ====== */}
+      <section className="py-20 bg-[#1A3C2A] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(212,69,26,0.5) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="flex justify-center mb-4">
+            <div className="flex gap-1">
+              {[...Array(5)].map((_, i) => (
+                <FaStar key={i} className="h-6 w-6 text-[#D4451A]" />
+              ))}
+            </div>
+          </div>
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
+            Love Shopping With Us?
+          </h2>
+          <p className="text-[#FFF9F2]/60 mb-10 max-w-xl mx-auto text-lg leading-relaxed">
+            Help your neighbors discover L &amp; M Service Market
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://www.yelp.com/biz/l-and-m-service-market-atlanta"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                "inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg",
+                "bg-[#D32323] hover:bg-[#B91C1C] text-white font-semibold text-lg",
+                "transition-all duration-300",
+                "shadow-lg shadow-[#D32323]/25",
+                "hover:shadow-xl hover:shadow-[#D32323]/35 hover:-translate-y-0.5"
+              )}
+            >
+              <FaStar className="h-5 w-5" />
+              Review on Yelp
+            </a>
+            <a
+              href="https://search.google.com/local/writereview?placeid=ChIJ_placeholder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                "inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg",
+                "bg-[#4285F4] hover:bg-[#3367D6] text-white font-semibold text-lg",
+                "transition-all duration-300",
+                "shadow-lg shadow-[#4285F4]/25",
+                "hover:shadow-xl hover:shadow-[#4285F4]/35 hover:-translate-y-0.5"
+              )}
+            >
+              <FaStar className="h-5 w-5" />
+              Review on Google
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* ====== MAP & CONTACT ====== */}
       <section className="py-20 bg-white">

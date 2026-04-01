@@ -128,6 +128,8 @@ model StoreSettings {
   smtpUser             String  @default("")
   smtpPass             String  @default("")
   smtpFrom             String  @default("")
+  ownerMessage         String  @default("") @db.Text
+  ownerMessageActive   Boolean @default(false)
 }
 
 model Newsletter {
@@ -255,4 +257,16 @@ model FAQ {
   published Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model ProductRequest {
+  id          String   @id @default(cuid())
+  name        String
+  email       String   @default("")
+  productName String
+  description String   @default("") @db.Text
+  status      String   @default("new")
+  adminNotes  String   @default("") @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

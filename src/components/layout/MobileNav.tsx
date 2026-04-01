@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaHome, FaShoppingBasket, FaInfoCircle, FaStar, FaPhone } from "react-icons/fa";
+import { FaHome, FaShoppingBasket, FaClipboardList, FaStar, FaPhone } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/", label: "Home", icon: FaHome },
   { href: "/inventory", label: "Products", icon: FaShoppingBasket },
-  { href: "/about", label: "About", icon: FaInfoCircle },
+  { href: "/request", label: "Request", icon: FaClipboardList },
   { href: "/testimonials", label: "Reviews", icon: FaStar },
   { href: "/contact", label: "Contact", icon: FaPhone },
 ];

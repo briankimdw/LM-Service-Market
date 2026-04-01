@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { formatPrice } from "@/lib/spot-prices";
 import { FaSearch } from "react-icons/fa";
+import { cn } from "@/lib/utils";
 
 export interface CoinListing {
   id: string;
@@ -37,12 +38,35 @@ function parseImages(imagesJson: string): string[] {
   }
 }
 
+function isNewArrival(createdAt: string): boolean {
+  try {
+    const created = new Date(createdAt);
+    const now = new Date();
+    const diffMs = now.getTime() - created.getTime();
+    const diffDays = diffMs / (1000 * 60 * 60 * 24);
+    return diffDays <= 7;
+  } catch {
+    return false;
+  }
+}
+
 export default function CoinCard({ coin, onQuickView }: CoinCardProps) {
   const images = parseImages(coin.images);
   const primaryImage = images.length > 0 ? images[0] : null;
+  const isNew = isNewArrival(coin.createdAt);
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-xl border border-[var(--border)] bg-white shadow-sm transition-all duration-400 hover:shadow-xl hover:shadow-[#1A3C2A]/8 hover:-translate-y-1">
+      {/* NEW Badge */}
+      {isNew && (
+        <div
+          className="absolute top-3 left-3 z-20 rounded-md bg-[#D4451A] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white shadow-md"
+          style={{ transform: "rotate(-3deg)" }}
+        >
+          NEW
+        </div>
+      )}
+
       {/* Image */}
       <Link href={`/inventory/${coin.slug}`} className="relative block aspect-square overflow-hidden bg-gray-50">
         {primaryImage ? (
@@ -91,7 +115,7 @@ export default function CoinCard({ coin, onQuickView }: CoinCardProps) {
         </button>
 
         {/* Category Badge */}
-        <span className="absolute left-3 top-3 rounded-full bg-[#1A3C2A]/90 backdrop-blur-sm px-3 py-1 text-[11px] font-semibold text-white tracking-wide">
+        <span className={cn("absolute top-3 rounded-full bg-[#1A3C2A]/90 backdrop-blur-sm px-3 py-1 text-[11px] font-semibold text-white tracking-wide", isNew ? "left-16" : "left-3")}>
           {coin.category}
         </span>
       </Link>

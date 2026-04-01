@@ -79,6 +79,8 @@ export async function PUT(request: NextRequest) {
           smtpPass: parsed.smtpPass || "",
           smtpFrom: parsed.smtpFrom || "",
           isOpen: parsed.isOpen,
+          ownerMessage: parsed.ownerMessage ?? "",
+          ownerMessageActive: parsed.ownerMessageActive ?? false,
         };
 
         // Handle memberships

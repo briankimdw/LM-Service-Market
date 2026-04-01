@@ -8,6 +8,7 @@ import {
   FaUpload,
   FaToggleOn,
   FaToggleOff,
+  FaBullhorn,
 } from "react-icons/fa";
 import { HiChevronDown, HiChevronRight } from "react-icons/hi";
 import { compressImage, validateImageFile } from "@/lib/image-utils";
@@ -59,6 +60,8 @@ interface Settings {
   smtpPass: string;
   smtpFrom: string;
   isOpen: boolean;
+  ownerMessage: string;
+  ownerMessageActive: boolean;
 }
 
 const defaultHours: HoursEntry[] = DAYS.map(() => ({
@@ -98,6 +101,8 @@ const defaultSettings: Settings = {
   smtpPass: "",
   smtpFrom: "",
   isOpen: true,
+  ownerMessage: "",
+  ownerMessageActive: false,
 };
 
 function Section({
@@ -198,6 +203,8 @@ export default function SettingsPage() {
           smtpPass: data.smtpPass || "",
           smtpFrom: data.smtpFrom || "",
           isOpen: data.isOpen ?? true,
+          ownerMessage: data.ownerMessage || "",
+          ownerMessageActive: data.ownerMessageActive ?? false,
         });
       } catch {
         // use defaults
@@ -411,6 +418,60 @@ export default function SettingsPage() {
               />
             </div>
           </div>
+        </Section>
+
+        {/* Owner Message */}
+        <Section title="Owner Message">
+          <p className="text-sm text-gray-500 mb-2">
+            Post a message that displays as a banner on your homepage. Great for announcements, holiday hours, or promotions.
+          </p>
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={() =>
+                setSettings((prev) => ({ ...prev, ownerMessageActive: !prev.ownerMessageActive }))
+              }
+              className="text-3xl transition-colors"
+            >
+              {settings.ownerMessageActive ? (
+                <FaToggleOn className="text-[#D4451A]" />
+              ) : (
+                <FaToggleOff className="text-gray-400" />
+              )}
+            </button>
+            <span className="text-sm font-medium text-gray-700">
+              Banner is{" "}
+              <span className={settings.ownerMessageActive ? "text-[#D4451A]" : "text-gray-400"}>
+                {settings.ownerMessageActive ? "ACTIVE" : "INACTIVE"}
+              </span>
+            </span>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Message
+            </label>
+            <textarea
+              name="ownerMessage"
+              value={settings.ownerMessage}
+              onChange={handleChange}
+              rows={3}
+              className="input-field w-full"
+              placeholder="e.g. We're closed for Thanksgiving! See you Friday."
+            />
+          </div>
+          {settings.ownerMessage && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Preview
+              </label>
+              <div className="rounded-lg overflow-hidden">
+                <div className="bg-[#D4451A] text-white text-center py-3 px-4 flex items-center justify-center gap-3">
+                  <FaBullhorn className="h-4 w-4 flex-shrink-0" />
+                  <span className="text-sm font-medium">{settings.ownerMessage}</span>
+                </div>
+              </div>
+            </div>
+          )}
         </Section>
 
         {/* Branding */}

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { QuickContact } from "@/components/QuickContact";
 
 interface StoreInfo {
   shopName: string;
@@ -46,6 +47,7 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
       <main className="flex-1 pb-16 lg:pb-0">{children}</main>
       <Footer store={store} />
       <MobileNav />
+      <QuickContact />
     </div>
   );
 }

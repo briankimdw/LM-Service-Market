@@ -14,12 +14,14 @@ import {
   FaSpinner,
   FaStar,
   FaQuestionCircle,
+  FaClipboardList,
 } from "react-icons/fa";
 import { HiMenuAlt2, HiX } from "react-icons/hi";
 
 const navLinks = [
   { href: "/admin", label: "Dashboard", icon: FaHome },
   { href: "/admin/inventory", label: "Products", icon: FaShoppingBasket },
+  { href: "/admin/requests", label: "Requests", icon: FaClipboardList },
   { href: "/admin/inquiries", label: "Inquiries", icon: FaEnvelope },
   { href: "/admin/blog", label: "Blog", icon: FaBlog },
   { href: "/admin/testimonials", label: "Reviews", icon: FaStar },
