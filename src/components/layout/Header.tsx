@@ -63,7 +63,7 @@ function checkIsOpen(hoursJson: string): boolean {
 
 export function Header({ store }: { store?: StoreInfo | null }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false); // kept for bottom glow only
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -113,10 +113,8 @@ export function Header({ store }: { store?: StoreInfo | null }) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-500",
-        scrolled
-          ? "shadow-[0_4px_20px_rgba(0,0,0,0.15)] backdrop-blur-md bg-[#1A3C2A]/97"
-          : "bg-[#1A3C2A]"
+        "sticky top-0 z-50 w-full transition-all duration-500 bg-[#1A3C2A]",
+        scrolled && "shadow-[0_4px_20px_rgba(0,0,0,0.15)]"
       )}
     >
       {/* Subtle gold accent line at top */}

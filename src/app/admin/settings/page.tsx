@@ -458,18 +458,28 @@ export default function SettingsPage() {
               className="input-field w-full"
               placeholder="e.g. We're closed for Thanksgiving! See you Friday."
             />
+            <p className="text-xs text-gray-400 mt-1">
+              Separate multiple messages with <span className="font-mono font-semibold text-gray-500">|</span> to cycle through them. Example: <span className="text-gray-500">New items in stock!|Weekend special: 10% off wine</span>
+            </p>
           </div>
           {settings.ownerMessage && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Preview
               </label>
-              <div className="rounded-lg overflow-hidden">
-                <div className="bg-[#D4451A] text-white text-center py-3 px-4 flex items-center justify-center gap-3">
-                  <FaBullhorn className="h-4 w-4 flex-shrink-0" />
-                  <span className="text-sm font-medium">{settings.ownerMessage}</span>
-                </div>
+              <div className="rounded-lg overflow-hidden space-y-2">
+                {settings.ownerMessage.split("|").map((msg, i) => msg.trim() && (
+                  <div key={i} className="bg-[#D4451A] text-white text-center py-3 px-4 flex items-center justify-center gap-3">
+                    <FaBullhorn className="h-4 w-4 flex-shrink-0" />
+                    <span className="text-sm font-medium">{msg.trim()}</span>
+                  </div>
+                ))}
               </div>
+              {settings.ownerMessage.includes("|") && (
+                <p className="text-xs text-gray-400 mt-2">
+                  These messages will cycle automatically on the homepage every 4 seconds.
+                </p>
+              )}
             </div>
           )}
         </Section>

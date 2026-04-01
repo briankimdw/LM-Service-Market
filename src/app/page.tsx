@@ -14,7 +14,8 @@ import {
   FaTicketAlt,
   FaHome as FaHousehold,
 } from "react-icons/fa";
-import { FaShieldAlt, FaAward, FaHandshake, FaStar, FaBullhorn } from "react-icons/fa";
+import { FaShieldAlt, FaAward, FaHandshake, FaStar } from "react-icons/fa";
+import AnnouncementBanner from "@/components/AnnouncementBanner";
 
 export const dynamic = 'force-dynamic';
 
@@ -105,13 +106,31 @@ export default async function HomePage() {
 
       {/* ====== HERO SECTION ====== */}
       <section className="relative min-h-[560px] md:min-h-[640px] flex items-center overflow-hidden">
+        {/* Base dark green background (always present) */}
         <div className="absolute inset-0 bg-[#1A3C2A]" />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A3C2A] via-[#1E4530] to-[#1A3C2A]" />
-        <div className="absolute inset-0 opacity-100">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4451A]/[0.04] rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#D4451A]/[0.03] rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
-        </div>
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(212,69,26,0.5) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+
+        {/* Banner image from admin settings, with dark overlay for text readability */}
+        {settings.bannerImage && (
+          <>
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${settings.bannerImage})` }}
+            />
+            <div className="absolute inset-0 bg-[#1A3C2A]/70" />
+          </>
+        )}
+
+        {/* Gradient + decorative elements (shown when no banner image) */}
+        {!settings.bannerImage && (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1A3C2A] via-[#1E4530] to-[#1A3C2A]" />
+            <div className="absolute inset-0 opacity-100">
+              <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4451A]/[0.04] rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+              <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#D4451A]/[0.03] rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
+            </div>
+            <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(212,69,26,0.5) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+          </>
+        )}
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 w-full">
           <div className="max-w-3xl">
@@ -175,14 +194,12 @@ export default async function HomePage() {
 
       {/* ====== OWNER MESSAGE BANNER ====== */}
       {settings.ownerMessageActive && settings.ownerMessage && (
-        <div className="bg-[#D4451A] text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
-            <div className="flex items-center justify-center gap-3 text-center">
-              <FaBullhorn className="h-4 w-4 flex-shrink-0 animate-pulse" />
-              <p className="text-sm sm:text-base font-medium">{settings.ownerMessage}</p>
-            </div>
-          </div>
-        </div>
+        <AnnouncementBanner
+          messages={settings.ownerMessage
+            .split("|")
+            .map((m) => m.trim())
+            .filter(Boolean)}
+        />
       )}
 
       {/* ====== FEATURED PRODUCTS ====== */}
