@@ -55,9 +55,9 @@ const services = [
 
 const whyChooseUs = [
   {
-    title: "25+ Years Strong",
+    title: "Since 1987",
     description:
-      "We've been serving the Midtown neighborhood for over two decades. L&M isn't just a store — it's an institution.",
+      "We've been serving the Midtown neighborhood for nearly four decades. L&M isn't just a store — it's a neighborhood institution.",
     icon: FaStar,
   },
   {
@@ -115,7 +115,7 @@ export default function AboutPage() {
                   more of. Tucked into the heart of Midtown Atlanta at 785
                   Argonne Ave NE, we&apos;ve been the go-to spot for groceries,
                   cold beer, wine, snacks, lottery tickets, and everyday
-                  essentials for over 25 years.
+                  essentials since 1987.
                 </p>
                 <p className="text-gray-600 leading-relaxed text-[17px]">
                   We&apos;re not a chain. We&apos;re not a franchise. We&apos;re
@@ -168,8 +168,8 @@ export default function AboutPage() {
                 If you&apos;ve been to L&M, you know Richard. He&apos;s the
                 kind of owner who remembers your name, asks about your family,
                 and always has a recommendation when you can&apos;t decide on a
-                beer. Richard has poured his heart into this market for over 25
-                years, turning a small convenience store into a true
+                beer. Richard has poured his heart into this market since 1987,
+                turning a small service market into a true
                 neighborhood landmark. He&apos;s not just running a business —
                 he&apos;s taking care of a community.
               </p>

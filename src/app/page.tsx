@@ -137,7 +137,7 @@ export default async function HomePage() {
             <div className="inline-flex items-center gap-2 rounded-full bg-[#D4451A]/10 border border-[#D4451A]/20 px-4 py-1.5 mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-[#D4451A] animate-pulse" />
               <span className="text-[#D4451A] text-xs font-semibold tracking-wider uppercase">
-                Midtown Atlanta&apos;s Neighborhood Market
+                Serving Midtown Atlanta Since 1987
               </span>
             </div>
 
